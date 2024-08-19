@@ -1,0 +1,8 @@
+class Map
+{
+  
+  public Map()
+  {
+    
+  }
+}
