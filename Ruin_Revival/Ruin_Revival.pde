@@ -1,6 +1,8 @@
 //Xavier, Kanon, Casey
 //zombie apocolyps game
 
+Player p;
+
 PImage start, load;
 
 boolean startGame, loadGame;
@@ -9,6 +11,7 @@ void setup()
 {
   
   fullScreen();
+  
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -19,6 +22,8 @@ void setup()
   load.resize(450, 0);
   startGame = false;
   loadGame = false;
+  
+  p = new Player();
 
 }
 
@@ -28,8 +33,12 @@ void draw()
   
   drawButtons();
   if(startGame || loadGame)
+  {
     background(0);
-    
+    noCursor();
+    p.drawPlayer();
+    p.movePlayer();
+  }
 }
 
 void drawButtons()
@@ -46,11 +55,34 @@ void drawButtons()
 void mouseClicked()
 {
   //start game
-  if( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(225/2) && mouseY <= height/2+(225/2) )
+  if( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(450/2) && mouseY <= height/2+(450/2) )
     startGame = true;
   
   //load game
   if( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/1.25-(225/2) && mouseY <= height/1.25+(225/2) )
     loadGame = true;
+}
 
+void keyPressed()
+{
+  if(key == 'a' || key == 'A')
+    p.left = true;
+  if(key == 'd' || key == 'D')
+    p.right = true;
+  if(key == 'w' || key == 'W')
+    p.up = true;
+  if(key == 's' || key == 'S')
+    p.down = true;
+}
+
+void keyReleased()
+{
+  if(key == 'a' || key == 'A')
+    p.left = false;
+  if(key == 'd' || key == 'D')
+    p.right = false;
+  if(key == 'w' || key == 'W')
+    p.up = false;
+  if(key == 's' || key == 'S')
+    p.down = false;
 }
