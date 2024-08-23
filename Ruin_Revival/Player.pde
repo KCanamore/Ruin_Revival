@@ -10,7 +10,7 @@ class Player
     xPos = width/2;
     yPos = height/2;
     
-    size = 100;
+    size = 50;
     
     xSpd = 0;
     ySpd = 0;
@@ -26,6 +26,8 @@ class Player
   {
     xPos += xSpd;
     yPos += ySpd;
+    
+    //BOUNCE
     
     xSpd *= 0.80;
     ySpd *= 0.80;

@@ -3,7 +3,7 @@
 
 Player p;
 
-PImage start, load;
+PImage start, load, tree, water, grass;
 
 boolean startGame, loadGame;
 
@@ -25,13 +25,20 @@ void setup()
 
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
+  tree = loadImage("tree1.png");
+  water = loadImage("water1.png");
+  grass = loadImage("grass1.png");
   start.resize(450, 0);
   load.resize(450, 0);
+  tree.resize(50, 0);
+  water.resize(75, 0);
+  grass.resize(75, 0);
   startGame = false;
   loadGame = false;
   
   p = new Player();
   setupMap();
+  
 }
 
 void draw()
@@ -52,19 +59,19 @@ void draw()
 void setupMap()
 {
   mapStr += "###############";
-  mapStr += "#            *#"; // * - save point
-  mapStr += "#  $          #";
-  mapStr += "#  ###        #"; // # - wall
-  mapStr += "#$ #$#       $#";
-  mapStr += "#$ # #        #"; // $ - coin
+  mapStr += "#             #"; // * - save point
   mapStr += "#             #";
-  mapStr += "#     $       #";
-  mapStr += "#* $          #";
-  mapStr += "#* $          #";
-  mapStr += "#* $          #";
-  mapStr += "#* $          #";
-  mapStr += "#* $          #";
-  mapStr += "#* $          #";
+  mapStr += "#             #"; // # - trees
+  mapStr += "#             #";
+  mapStr += "#             #"; // $ - water
+  mapStr += "#    $$       #";
+  mapStr += "#   $$$$      #"; //   - grass
+  mapStr += "#  $$$$$$     #";
+  mapStr += "#   $$$$      #";
+  mapStr += "#    $$       #";
+  mapStr += "#             #";
+  mapStr += "#             #";
+  mapStr += "#             #";
   mapStr += "###############";
   
   //Populates char array with the characters of mapStr
@@ -79,22 +86,21 @@ void setupMap()
 
 void drawMap()
 {
-  rectMode(CORNER);
+  rectMode(CENTER);
   noStroke();
   
-  //Draws colored squares to make the map
+  //Draws the terrain to make the map
   for( int i = 0; i < map.length; i++ )
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
-        image();
+        image(tree, 475+j*70,35+i*70);
       else if(map[j][i]==' ')
-        fill(0,100,0);
+        image(grass, 475+j*70,35+i*70);
       else if(map[j][i]=='$')
-        fill(200,200,0);
+        image(water, 475+j*70,35+i*70);
       else if(map[j][i]=='*')
-        fill(0,0,200);
-      rect(j*70,i*70,70,70);
+        image(tree, 475+j*70,35+i*70);
     }
 }
 
