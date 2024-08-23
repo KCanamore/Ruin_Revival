@@ -65,24 +65,24 @@ void mouseClicked()
 
 void keyPressed()
 {
-  if(key == 'a' || key == 'A')
+  if(key == 'a' || key == 'A' || keyCode == LEFT)
     p.left = true;
-  if(key == 'd' || key == 'D')
+  if(key == 'd' || key == 'D' || keyCode == RIGHT)
     p.right = true;
-  if(key == 'w' || key == 'W')
+  if(key == 'w' || key == 'W' || keyCode == UP)
     p.up = true;
-  if(key == 's' || key == 'S')
+  if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 }
 
 void keyReleased()
 {
-  if(key == 'a' || key == 'A')
+  if(key == 'a' || key == 'A' || keyCode ==LEFT)
     p.left = false;
-  if(key == 'd' || key == 'D')
+  if(key == 'd' || key == 'D' || keyCode == RIGHT)
     p.right = false;
-  if(key == 'w' || key == 'W')
+  if(key == 'w' || key == 'W'|| keyCode == UP)
     p.up = false;
-  if(key == 's' || key == 'S')
+  if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
 }
