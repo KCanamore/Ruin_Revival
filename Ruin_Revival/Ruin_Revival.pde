@@ -7,6 +7,13 @@ PImage start, load;
 
 boolean startGame, loadGame;
 
+int mapxSize = 15;
+int mapySize = 15;
+
+//map data
+char [][] map = new char[mapxSize][mapySize];
+String mapStr = "";
+
 void setup()
 {
   
@@ -24,7 +31,7 @@ void setup()
   loadGame = false;
   
   p = new Player();
-
+  setupMap();
 }
 
 void draw()
@@ -36,10 +43,61 @@ void draw()
   {
     background(0);
     noCursor();
+    drawMap();
     p.drawPlayer();
     p.movePlayer();
   }
 }
+
+void setupMap()
+{
+  mapStr += "###############";
+  mapStr += "#            *#"; // * - save point
+  mapStr += "#  $          #";
+  mapStr += "#  ###        #"; // # - wall
+  mapStr += "#$ #$#       $#";
+  mapStr += "#$ # #        #"; // $ - coin
+  mapStr += "#             #";
+  mapStr += "#     $       #";
+  mapStr += "#* $          #";
+  mapStr += "#* $          #";
+  mapStr += "#* $          #";
+  mapStr += "#* $          #";
+  mapStr += "#* $          #";
+  mapStr += "#* $          #";
+  mapStr += "###############";
+  
+  //Populates char array with the characters of mapStr
+  for( int i = 0; i < map.length; i++ )
+  {
+    for( int j = 0; j < map[0].length; j++ )
+    {
+      map[j][i] = mapStr.charAt(j+i*15);
+    }
+  }
+}
+
+void drawMap()
+{
+  rectMode(CORNER);
+  noStroke();
+  
+  //Draws colored squares to make the map
+  for( int i = 0; i < map.length; i++ )
+    for( int j = 0; j < map[0].length; j++)
+    {
+      if(map[j][i]=='#')
+        image();
+      else if(map[j][i]==' ')
+        fill(0,100,0);
+      else if(map[j][i]=='$')
+        fill(200,200,0);
+      else if(map[j][i]=='*')
+        fill(0,0,200);
+      rect(j*70,i*70,70,70);
+    }
+}
+
 
 void drawButtons()
 {
