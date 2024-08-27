@@ -2,6 +2,7 @@
 //zombie apocolyps game
 
 Player p;
+Map m;
 
 PImage start, load, tree, water, grass;
 
@@ -27,7 +28,7 @@ void setup()
   load = loadImage("load_button.png");
   tree = loadImage("tree1.png");
   water = loadImage("water1.png");
-  grass = loadImage("grass1.png");
+  grass = loadImage("grass3.png");
   start.resize(450, 0);
   load.resize(450, 0);
   tree.resize(250, 0);
@@ -37,6 +38,8 @@ void setup()
   loadGame = false;
   
   p = new Player();
+  m = new Map();
+  
   setupMap();
   
 }
@@ -46,6 +49,7 @@ void draw()
   background(0);
   
   drawButtons();
+      
   if(startGame || loadGame)
   {
     background(0);
@@ -94,13 +98,13 @@ void drawMap()
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
-        image(tree, 475+j*275,35+i*275);
+        image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
       else if(map[j][i]==' ')
-        image(grass, 475+j*250,35+i*250);
+        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='$')
-        image(water, 475+j*250,35+i*250);
+        image(water, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='*')
-        image(tree, 475+j*275,35+i*275);
+        image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
     }
 }
 

@@ -33,12 +33,33 @@ class Player
     ySpd *= 0.80;
     
     if(left)
-      xSpd -= 5;
+      xSpd -= 2;
     if(right)
-      xSpd += 5;
+      xSpd += 2;
     if(up)
-      ySpd -= 5;
+      ySpd -= 2;
     if(down)
-      ySpd += 5;
+      ySpd += 2;
+      
+    if(xPos > width-size/2)
+    {
+      xPos = width-size/2;
+      m.mapXpos -= xSpd;
+    }
+    if(xPos <= size/2)
+    {
+      xPos = size/2;
+      m.mapXpos -= xSpd;
+    }
+    if(yPos >= height-size/2)
+    {
+      yPos = height-size/2;
+      m.mapYpos -= ySpd;
+    }
+    if(yPos <= size/2)
+    {
+      yPos = size/2;
+      m.mapYpos -= ySpd;
+    }
   }
 }
