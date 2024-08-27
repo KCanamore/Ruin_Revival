@@ -30,9 +30,9 @@ void setup()
   grass = loadImage("grass1.png");
   start.resize(450, 0);
   load.resize(450, 0);
-  tree.resize(50, 0);
-  water.resize(75, 0);
-  grass.resize(75, 0);
+  tree.resize(250, 0);
+  water.resize(250, 0);
+  grass.resize(250, 0);
   startGame = false;
   loadGame = false;
   
@@ -94,13 +94,13 @@ void drawMap()
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
-        image(tree, 475+j*70,35+i*70);
+        image(tree, 475+j*275,35+i*275);
       else if(map[j][i]==' ')
-        image(grass, 475+j*70,35+i*70);
+        image(grass, 475+j*250,35+i*250);
       else if(map[j][i]=='$')
-        image(water, 475+j*70,35+i*70);
+        image(water, 475+j*250,35+i*250);
       else if(map[j][i]=='*')
-        image(tree, 475+j*70,35+i*70);
+        image(tree, 475+j*275,35+i*275);
     }
 }
 
