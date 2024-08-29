@@ -1,12 +1,13 @@
 class Map
 {
   
-  float gripXpos, gridYpos;
+  float gridXpos, gridYpos;
   float mapXpos, mapYpos;
   
   public Map()
   {
-    gripXpos = p.xPos/250;
+    gridXpos = p.xPos/250;
+    gridYpos = p.yPos/250;
     
     mapXpos = 110;
     mapYpos = 125;
