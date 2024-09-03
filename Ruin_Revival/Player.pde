@@ -19,6 +19,7 @@ class Player
   
   void drawPlayer()
   {
+    fill(255);
     circle(xPos, yPos, size);
   }
   

@@ -1,16 +1,24 @@
 //Xavier, Kanon, Casey
 //zombie apocolyps game
 
+import processing.sound.*;
+
 Player p;
+Zombies z;
 Map m;
 
-PImage start, load, tree, water, grass;
+PImage start, load, tree, water, grass, cobble;
 
 boolean startGame, loadGame;
 
 int mapxSize = 15;
 int mapySize = 15;
 int score;
+
+
+//sound stuff
+SoundFile backMusic;
+boolean musicOn = false;
 
 //map data
 char [][] map = new char[mapxSize][mapySize];
@@ -21,6 +29,7 @@ void setup()
   
   fullScreen();
   
+  backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -30,15 +39,18 @@ void setup()
   tree = loadImage("tree1.png");
   water = loadImage("water1.png");
   grass = loadImage("grass3.png");
+  cobble = loadImage("cobble.png");
   start.resize(450, 0);
   load.resize(450, 0);
   tree.resize(250, 0);
   water.resize(250, 0);
   grass.resize(250, 0);
+  cobble.resize(250, 0);
   startGame = false;
   loadGame = false;
   
   p = new Player();
+  z = new Zombies();
   m = new Map();
   
   setupMap();
@@ -48,6 +60,13 @@ void setup()
 void draw()
 {
   background(0);
+  
+  //music
+  if(musicOn == true)
+  {
+    backMusic.play();
+    musicOn = false;
+  }
   
   drawButtons();
   //loadGame();
@@ -59,6 +78,8 @@ void draw()
     drawMap();
     p.drawPlayer();
     p.movePlayer();
+    z.drawZombie();
+    z.moveZombie();
   }
 }
 
@@ -67,9 +88,9 @@ void setupMap()
   mapStr += "###############";
   mapStr += "#             #"; // * - save point
   mapStr += "#             #";
-  mapStr += "#             #"; // # - trees
-  mapStr += "#             #";
-  mapStr += "#             #"; // $ - water
+  mapStr += "#    ***      #"; // # - trees
+  mapStr += "#      ***    #";
+  mapStr += "#        ***  #"; // $ - water
   mapStr += "#    $$       #";
   mapStr += "#   $$$$      #"; //   - grass
   mapStr += "#  $$$$$$     #";
@@ -106,7 +127,7 @@ void drawMap()
       else if(map[j][i]=='$')
         image(water, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='*')
-        image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
+        image(cobble, m.mapXpos+j*250,m.mapYpos+i*250);
     }
 }
 
@@ -167,13 +188,17 @@ void mouseClicked()
 {
   //start game
   if( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(450/2) && mouseY <= height/2+(450/2) )
+  {
     startGame = true;
+    musicOn = true;
+  }
   
   //load game
   if( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/1.25-(225/2) && mouseY <= height/1.25+(225/2) )
   {
     loadGame = true;
     loadGame();
+    musicOn = true;
   }
 }
 
