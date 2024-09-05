@@ -13,6 +13,10 @@ class Map
     mapYpos = 125;
   }
   
-  
+  void showTileType()
+  {
+    fill(200,0,0);
+    text( map[ int((mapXpos+p.xPos)/250) ][ int((mapYpos+p.yPos)/250) ], 200, 200);
+  }
   
 }

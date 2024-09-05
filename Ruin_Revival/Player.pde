@@ -61,6 +61,6 @@ class Player
     {
       yPos = size/2;
       m.mapYpos -= ySpd;
-    }
+    }    
   }
 }

@@ -69,7 +69,6 @@ void draw()
   }
   
   drawButtons();
-  //loadGame();
       
   if(startGame || loadGame)
   {
@@ -81,23 +80,25 @@ void draw()
     z.drawZombie();
     z.moveZombie();
   }
+  
+  m.showTileType();
 }
 
 void setupMap()
 {
-  mapStr += "###############";
-  mapStr += "#             #"; // * - save point
+  mapStr += "###############"; //15x15 map
   mapStr += "#             #";
-  mapStr += "#    ***      #"; // # - trees
-  mapStr += "#      ***    #";
-  mapStr += "#        ***  #"; // $ - water
-  mapStr += "#    $$       #";
-  mapStr += "#   $$$$      #"; //   - grass
-  mapStr += "#  $$$$$$     #";
-  mapStr += "#   $$$$      #";
-  mapStr += "#    $$       #";
-  mapStr += "#             #";
-  mapStr += "#             #";
+  mapStr += "#             #"; // * - cobble
+  mapStr += "#    ***      #";
+  mapStr += "#      ***    #"; // # - trees
+  mapStr += "#        ***  #";
+  mapStr += "#    $$   **  #"; // $ - water
+  mapStr += "#   $$$$   ** #";
+  mapStr += "#  $$$$$$  ** #"; // space - grass
+  mapStr += "#   $$$$  **  #";
+  mapStr += "#    $$   **  #";
+  mapStr += "#        **   #";
+  mapStr += "#  *******    #";
   mapStr += "#             #";
   mapStr += "###############";
   
