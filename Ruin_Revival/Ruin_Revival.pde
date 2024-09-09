@@ -116,13 +116,18 @@ void drawMap()
 {
   rectMode(CENTER);
   noStroke();
+  //noFill();
+  
   
   //Draws the terrain to make the map
   for( int i = 0; i < map.length; i++ )
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
+      {
         image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
+        square(m.mapXpos+j*275, m.mapYpos+i*275, 250);
+      }
       else if(map[j][i]==' ')
         image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='$')
