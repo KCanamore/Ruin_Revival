@@ -21,6 +21,7 @@ int score;
 boolean musicOn = false;
 
 //map data
+ArrayList<Barrier> barrier = new ArrayList<Barrier>();
 char [][] map = new char[mapxSize][mapySize];
 String mapStr = "";
 
@@ -124,10 +125,7 @@ void drawMap()
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
-      {
         image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
-        square(m.barrierXpos+j*275, m.barrierYpos+i*275, 250);
-      }
       else if(map[j][i]==' ')
         image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='$')
