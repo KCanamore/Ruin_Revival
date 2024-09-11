@@ -17,7 +17,7 @@ int score;
 
 
 //sound stuff
-SoundFile backMusic;
+//SoundFile backMusic;
 boolean musicOn = false;
 
 //map data
@@ -29,7 +29,7 @@ void setup()
   
   fullScreen();
   
-  backMusic = new SoundFile(this, "music.mp3");
+  //backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -64,7 +64,7 @@ void draw()
   //music
   if(musicOn == true)
   {
-    backMusic.play();
+    //backMusic.play();
     musicOn = false;
   }
   
@@ -81,7 +81,7 @@ void draw()
     z.moveZombie();
   }
   
-  m.showTileType();
+  //m.showTileType();
 }
 
 void setupMap()
@@ -126,7 +126,7 @@ void drawMap()
       if(map[j][i]=='#')
       {
         image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
-        square(m.mapXpos+j*275, m.mapYpos+i*275, 250);
+        square(m.barrierXpos+j*275, m.barrierYpos+i*275, 250);
       }
       else if(map[j][i]==' ')
         image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
