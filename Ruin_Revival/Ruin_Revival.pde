@@ -3,9 +3,10 @@
 
 import processing.sound.*;
 
-Player p;
+Player p = new Player();
 Zombies z;
 Map m;
+Barrier b;
 
 PImage start, load, tree, water, grass, cobble;
 
@@ -80,6 +81,8 @@ void draw()
     p.movePlayer();
     z.drawZombie();
     z.moveZombie();
+    
+    blockPathing( p );
   }
   
   //m.showTileType();

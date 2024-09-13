@@ -46,25 +46,25 @@ class Player
     {
       xPos = width-size/2;
       m.mapXpos -= xSpd;
-      m.barrierXpos -= xSpd;
+      //b.barrierXpos -= xSpd;
     }
     if(xPos <= size/2)
     {
       xPos = size/2;
       m.mapXpos -= xSpd;
-      m.barrierXpos -= xSpd;
+      //b.barrierXpos -= xSpd;
     }
     if(yPos >= height-size/2)
     {
       yPos = height-size/2;
       m.mapYpos -= ySpd;
-      m.barrierXpos -= ySpd;
+      //b.barrierXpos -= ySpd;
     }
     if(yPos <= size/2)
     {
       yPos = size/2;
       m.mapYpos -= ySpd;
-      m.barrierXpos -= ySpd;
+      //b.barrierXpos -= ySpd;
     }
     
     //if(yPos <= m.bottom())
@@ -77,9 +77,4 @@ class Player
     //  xSpd = -xSpd;
   }
   
-  //chek and see if a barrier has been hit by player ann zombies
-  public boolean hitBarrier()
-  {
-    return false;
-  }
 }
