@@ -91,8 +91,7 @@ void draw()
     {
       z.moveZombie();
       zomTimer = 0;
-    }  
-
+    }
   }
   
   zomTimer++;
