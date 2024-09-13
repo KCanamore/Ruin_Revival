@@ -154,7 +154,7 @@ void setupMap()
   mapStr += "#   $$$$   ** #";
   mapStr += "#  $$$$$$  ** #"; // space - grass
   mapStr += "#   $$$$  **  #";
-  mapStr += "#    $$   **  #";
+  mapStr += "#    $$   **  #"; // @ - cabin
   mapStr += "#        **   #";
   mapStr += "#  *******    #";
   mapStr += "#             #";
