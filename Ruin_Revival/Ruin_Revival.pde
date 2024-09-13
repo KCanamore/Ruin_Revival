@@ -6,7 +6,7 @@ import processing.sound.*;
 Player p = new Player();
 Zombies z;
 Map m;
-Barrier b;
+Barrier B;
 
 PImage start, load, tree, water, grass, cobble;
 
@@ -56,6 +56,7 @@ void setup()
   p = new Player();
   z = new Zombies();
   m = new Map();
+  //B = new Barrier();
   
   setupMap();
   
@@ -82,8 +83,6 @@ void draw()
     p.drawPlayer();
     p.movePlayer();
     z.drawZombie();
-
-    z.moveZombie();
     
     blockPathing( p );
 
@@ -97,6 +96,50 @@ void draw()
   
   zomTimer++;
 }
+
+void blockPathing( Player o )
+{
+  //look at all blocks
+  for( Barrier b: barrier )
+  {
+    //if object inside block
+    if( o.xPos+o.size/2 > b.barrierXpos-b.barrierXsize/2
+     && o.xPos-o.size/2 < b.barrierXpos+b.barrierXsize/2
+     && o.yPos+o.size/2 > b.barrierYpos-b.barrierYsize/2
+     && o.yPos-o.size/2 < b.barrierYpos+b.barrierYsize/2 )
+    {
+      //find nearest side (default to left)
+      int side  = 0; //0-left, 1-top, 2-right, 3-bottom
+      float dist = dist(o.xPos, o.yPos, b.barrierXpos-b.barrierXsize/2, b.barrierYpos); //distance from last check
+      //check top
+      if( dist( o.xPos, o.yPos, b.barrierXpos, b.barrierYpos-b.barrierYsize/2 ) < dist )
+      {
+        dist = dist( o.xPos, o.yPos, b.barrierXpos, b.barrierYpos-b.barrierYsize/2 );
+        side = 1;
+      }
+      //check right
+      if( dist( o.xPos, o.yPos, b.barrierXpos+b.barrierXsize/2, b.barrierYpos ) < dist )
+      {
+        dist = dist( o.xPos, o.yPos, b.barrierXpos+b.barrierXsize/2, b.barrierYpos );
+        side = 2;
+      }
+      //check bottom
+      if( dist( o.xPos, o.yPos, b.barrierXpos, b.barrierYpos+b.barrierYsize/2 ) < dist )
+      {
+        dist = dist( o.xPos, o.yPos, b.barrierXpos, b.barrierYpos+b.barrierYsize/2 );
+        side = 3;
+      }
+      //Set object to that side of block
+      if( side == 0 ) o.xPos = b.barrierXpos-b.barrierXsize/2-o.size/2;
+      if( side == 1 ) o.yPos = b.barrierYpos-b.barrierYsize/2-o.size/2;
+      if( side == 2 ) o.xPos = b.barrierXpos+b.barrierXsize/2+o.size/2;
+      if( side == 3 ) o.yPos = b.barrierYpos+b.barrierYsize/2+o.size/2;
+      //Only one block activates per call
+      //return;
+    }
+  }
+}
+
 
 void setupMap()
 {
@@ -122,6 +165,8 @@ void setupMap()
     for( int j = 0; j < map[0].length; j++ )
     {
       map[j][i] = mapStr.charAt(j+i*15);
+      if( map[j][i] == '#' )
+        barrier.add( new Barrier(j*250,i*250) );
     }
   }
 }
@@ -138,7 +183,10 @@ void drawMap()
     for( int j = 0; j < map[0].length; j++)
     {
       if(map[j][i]=='#')
+      {
         image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
+        //rect(m.mapXpos+j*275,m.mapYpos+i*275, B.barrierXsize, B.barrierYsize);
+      }
       else if(map[j][i]==' ')
         image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='$')
