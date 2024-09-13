@@ -8,7 +8,7 @@ Zombies z;
 Map m;
 Barrier B;
 
-PImage start, load, tree, water, grass, cobble;
+PImage start, load, tree, water, grass, cobble, cabin;
 
 boolean startGame, loadGame;
 
@@ -44,12 +44,14 @@ void setup()
   water = loadImage("water1.png");
   grass = loadImage("grass3.png");
   cobble = loadImage("cobble.png");
+  cabin = loadImage("cabin.png");
   start.resize(450, 0);
   load.resize(450, 0);
   tree.resize(250, 0);
   water.resize(250, 0);
   grass.resize(250, 0);
   cobble.resize(250, 0);
+  cabin.resize(250, 0);
   startGame = false;
   loadGame = false;
   
@@ -84,14 +86,13 @@ void draw()
     p.movePlayer();
     z.drawZombie();
     
-    blockPathing( p );
+    //blockPathing( p );
 
     if(zomTimer >= 22)
     {
       z.moveZombie();
       zomTimer = 0;
-    }  
-
+    }
   }
   
   zomTimer++;
@@ -145,7 +146,7 @@ void setupMap()
 {
   mapStr += "###############"; //15x15 map
   mapStr += "#             #";
-  mapStr += "#             #"; // * - cobble
+  mapStr += "#     @       #"; // * - cobble
   mapStr += "#    ***      #";
   mapStr += "#      ***    #"; // # - trees
   mapStr += "#        ***  #";
@@ -193,6 +194,11 @@ void drawMap()
         image(water, m.mapXpos+j*250,m.mapYpos+i*250);
       else if(map[j][i]=='*')
         image(cobble, m.mapXpos+j*250,m.mapYpos+i*250);
+      else if(map[j][i]=='@')
+      {
+        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+        image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
+      }  
     }
 }
 
