@@ -58,12 +58,12 @@ class Zombies
     }
 
     if (left)
-      xSpd -= 1;
+      xSpd -= 10;
     if (right)
-      xSpd += 1;
+      xSpd += 10;
     if (up)
-      ySpd -= 1;
+      ySpd -= 10;
     if (down)
-      ySpd += 1;
+      ySpd += 10;
   }
 }
