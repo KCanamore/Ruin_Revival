@@ -16,6 +16,8 @@ int mapxSize = 15;
 int mapySize = 15;
 int score;
 
+int zomTimer = 0;
+
 
 //sound stuff
 //SoundFile backMusic;
@@ -80,12 +82,20 @@ void draw()
     p.drawPlayer();
     p.movePlayer();
     z.drawZombie();
+<<<<<<< HEAD
     z.moveZombie();
     
     blockPathing( p );
+=======
+    if(zomTimer >= 22)
+    {
+      z.moveZombie();
+      zomTimer = 0;
+    }  
+>>>>>>> f0f5e3e4d768eb17f9f13907b805c12b5fbf0387
   }
   
-  //m.showTileType();
+  zomTimer++;
 }
 
 void setupMap()
