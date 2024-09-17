@@ -46,25 +46,31 @@ class Player
     {
       xPos = width-size/2;
       m.mapXpos -= xSpd;
-      //b.barrierXpos -= xSpd;
+      for(Barrier b: barrier )
+        b.barrierXpos -= xSpd;
     }
     if(xPos <= size/2)
     {
       xPos = size/2;
       m.mapXpos -= xSpd;
-      //b.barrierXpos -= xSpd;
+      for(Barrier b: barrier )
+        b.barrierXpos -= xSpd;
     }
     if(yPos >= height-size/2)
     {
       yPos = height-size/2;
       m.mapYpos -= ySpd;
-      //b.barrierXpos -= ySpd;
+      
+      for(Barrier b: barrier )
+        b.barrierYpos -= ySpd;
     }
     if(yPos <= size/2)
     {
       yPos = size/2;
       m.mapYpos -= ySpd;
-      //b.barrierXpos -= ySpd;
+      
+      for(Barrier b: barrier )
+        b.barrierYpos -= ySpd;
     }
     
     //if(yPos <= m.bottom())

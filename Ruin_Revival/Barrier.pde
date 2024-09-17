@@ -7,8 +7,8 @@ class Barrier
   {
     barrierXpos = x;
     barrierYpos = y;
-    barrierXsize = 200;
-    barrierYsize = 200;
+    barrierXsize = 250;
+    barrierYsize = 250;
   }
   
   void drawBarrier()
