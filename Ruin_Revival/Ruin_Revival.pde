@@ -88,11 +88,11 @@ void draw()
     
     //blockPathing( p );
 
-    if(zomTimer >= 22)
-    {
+    //if(zomTimer >= 22)
+    //{
       z.moveZombie();
-      zomTimer = 0;
-    }
+    //  zomTimer = 0;
+    //}
   }
   
   zomTimer++;

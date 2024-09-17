@@ -32,38 +32,47 @@ class Zombies
 
     xSpd *= 0.80;
     ySpd *= 0.80;
-
-    if (p.xPos < xPos)
+    if(dist(p.xPos, p.yPos, z.xPos, z.yPos)< height/2 && dist(p.xPos, p.yPos, z.xPos, z.yPos)< width/2)
     {
-      left = true;
-      right = false;
+      if (p.xPos < xPos)
+      {
+        left = true;
+        right = false;
+      }
+  
+      if (p.xPos > xPos)
+      {
+        right = true;
+        left = false;
+      }
+  
+      if (p.yPos < yPos)
+      {
+        up = true;
+        down = false;
+      }
+  
+      if (p.yPos > yPos)
+      {
+        down = true;
+        up = false;
+      }
     }
-
-    if (p.xPos > xPos)
+    else
     {
-      right = true;
-      left = false;
-    }
-
-    if (p.yPos < yPos)
-    {
-      up = true;
-      down = false;
-    }
-
-    if (p.yPos > yPos)
-    {
-      down = true;
-      up = false;
+     up = false;
+     down = false; 
+     left = false; 
+     right = false; 
     }
 
     if (left)
-      xSpd -= 10;
+      xSpd -= 0.5;
     if (right)
-      xSpd += 10;
+      xSpd += 0.5;
     if (up)
-      ySpd -= 10;
+      ySpd -= 0.5;
     if (down)
-      ySpd += 10;
+      ySpd += 0.5;
   }
 }
