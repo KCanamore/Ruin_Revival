@@ -42,31 +42,31 @@ class Player
     if(down)
       ySpd += 2;
       
-    if(xPos > width-size/2)
+    if(xPos > width-250)
     {
-      xPos = width-size/2;
+      xPos = width-250;
       m.mapXpos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
     }
-    if(xPos <= size/2)
+    if(xPos <= 250)
     {
-      xPos = size/2;
+      xPos = 250;
       m.mapXpos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
     }
-    if(yPos >= height-size/2)
+    if(yPos >= height-250)
     {
-      yPos = height-size/2;
+      yPos = height-250;
       m.mapYpos -= ySpd;
       
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
     }
-    if(yPos <= size/2)
+    if(yPos <= 250)
     {
-      yPos = size/2;
+      yPos = 250;
       m.mapYpos -= ySpd;
       
       for(Barrier b: barrier )

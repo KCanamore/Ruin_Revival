@@ -20,7 +20,7 @@ int zomTimer = 0;
 
 
 //sound stuff
-//SoundFile backMusic;
+SoundFile backMusic;
 boolean musicOn = false;
 
 //map data
@@ -33,7 +33,7 @@ void setup()
   
   fullScreen();
   
-  //backMusic = new SoundFile(this, "music.mp3");
+  backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -58,7 +58,6 @@ void setup()
   p = new Player();
   z = new Zombies();
   m = new Map();
-  //B = new Barrier();
   
   setupMap();
   
@@ -71,7 +70,7 @@ void draw()
   //music
   if(musicOn == true)
   {
-    //backMusic.play();
+    backMusic.play();
     musicOn = false;
   }
   
@@ -145,7 +144,7 @@ void blockPathing( Player o )
 void setupMap()
 {
   mapStr += "###############"; //15x15 map
-  mapStr += "#             #";
+  mapStr += "#            *#";
   mapStr += "#     @       #"; // * - cobble
   mapStr += "#    ***      #";
   mapStr += "#      ***    #"; // # - trees
@@ -176,8 +175,6 @@ void drawMap()
 {
   rectMode(CENTER);
   noStroke();
-  //noFill();
-  
   
   //Draws the terrain to make the map
   for( int i = 0; i < map.length; i++ )
@@ -185,8 +182,8 @@ void drawMap()
     {
       if(map[j][i]=='#')
       {
-        image(tree, m.mapXpos+j*275,m.mapYpos+i*275);
-        //rect(m.mapXpos+j*275,m.mapYpos+i*275, B.barrierXsize, B.barrierYsize);
+        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+        image(tree, m.mapXpos+j*250,m.mapYpos+i*250);
       }
       else if(map[j][i]==' ')
         image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
