@@ -20,7 +20,7 @@ int zomTimer = 0;
 
 
 //sound stuff
-SoundFile backMusic;
+//SoundFile backMusic;
 boolean musicOn = false;
 
 //map data
@@ -28,12 +28,13 @@ ArrayList<Barrier> barrier = new ArrayList<Barrier>();
 char [][] map = new char[mapxSize][mapySize];
 String mapStr = "";
 
+
 void setup()
 {
   
   fullScreen();
   
-  backMusic = new SoundFile(this, "music.mp3");
+  //backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -70,7 +71,7 @@ void draw()
   //music
   if(musicOn == true)
   {
-    backMusic.play();
+    //backMusic.play();
     musicOn = false;
   }
   
@@ -95,6 +96,8 @@ void draw()
   }
   
   zomTimer++;
+  
+  println("barrier: "+barrier.size());
 }
 
 void blockPathing( Player o )
@@ -176,6 +179,7 @@ void drawMap()
   rectMode(CENTER);
   noStroke();
   
+  
   //Draws the terrain to make the map
   for( int i = 0; i < map.length; i++ )
     for( int j = 0; j < map[0].length; j++)
@@ -197,6 +201,7 @@ void drawMap()
         image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
       }  
     }
+    
 }
 
 
