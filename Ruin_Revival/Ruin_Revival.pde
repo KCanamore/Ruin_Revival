@@ -33,7 +33,7 @@ void setup()
   
   fullScreen();
   
-  backMusic = new SoundFile(this, "music.mp3");
+  //backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -70,7 +70,7 @@ void draw()
   //music
   if(musicOn == true)
   {
-    backMusic.play();
+    //backMusic.play();
     musicOn = false;
   }
   
