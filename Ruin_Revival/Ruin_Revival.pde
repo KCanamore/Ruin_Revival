@@ -8,7 +8,7 @@ Zombies z;
 Map m;
 Barrier B;
 
-PImage start, load, tree, water, grass, cobble, cabin;
+PImage title, start, load, tree, water, grass, cobble, cabin;
 
 boolean startGame, loadGame;
 boolean isCabin = false;
@@ -39,6 +39,7 @@ void setup()
   rectMode(CENTER);
   imageMode(CENTER);
 
+  title = loadImage("title.png");
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
   tree = loadImage("tree1.png");
@@ -46,6 +47,7 @@ void setup()
   grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
+  title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
   tree.resize(250, 0);
@@ -144,77 +146,11 @@ void blockPathing( Player o )
   }
 }
 
-void setupMap()
-{
-  mapStr += "###############"; //15x15 map
-  mapStr += "#            *#";
-  mapStr += "#     @       #"; // * - cobble
-  mapStr += "#    ***      #";
-  mapStr += "#      ***    #"; // # - trees
-  mapStr += "#        ***  #";
-  mapStr += "#    $$   **  #"; // $ - water
-  mapStr += "#   $$$$   ** #";
-  mapStr += "#  $$$$$$  ** #"; // space - grass
-  mapStr += "#   $$$$  **  #";
-  mapStr += "#    $$   **  #"; // @ - cabin
-  mapStr += "#        **   #";
-  mapStr += "#  *******    #";
-  mapStr += "#             #";
-  mapStr += "###############";
-  
-  //Populates char array with the characters of mapStr
-  for( int i = 0; i < map.length; i++ )
-  {
-    for( int j = 0; j < map[0].length; j++ )
-    {
-      map[j][i] = mapStr.charAt(j+i*15);
-      if( map[j][i] == '#' )
-        barrier.add( new Barrier(j*250,i*250) );
-      if( map[j][i] == '$' )
-        barrier.add( new Barrier(j*250,i*250) );
-    }
-  }
-}
-
-void drawMap()
-{
-  rectMode(CENTER);
-  noStroke();
-  
-  
-  //Draws the terrain to make the map
-  for( int i = 0; i < map.length; i++ )
-    for( int j = 0; j < map[0].length; j++)
-    {
-      if(map[j][i]=='#')
-      {
-        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-        image(tree, m.mapXpos+j*250,m.mapYpos+i*250);
-      }
-      else if(map[j][i]==' ')
-        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-      else if(map[j][i]=='$')
-        image(water, m.mapXpos+j*250,m.mapYpos+i*250);
-      else if(map[j][i]=='*')
-        image(cobble, m.mapXpos+j*250,m.mapYpos+i*250);
-      else if(map[j][i]=='@')
-      {
-        image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-        image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
-      }  
-    }
-    
-}
-
 void drawButtons()
-{
- 
-  textSize(150);
-  text("Ruin Revival", width/3.25, height/4);
-  
+{  
+  image(title, width/2, height/5);
   image(start, width/2, height/2);
   image(load, width/2, height/1.25);
-  
 }
 
 void saveGame()

@@ -74,15 +74,6 @@ class Player
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
     }
-    
-    //if(yPos <= m.bottom())
-    //  ySpd = -ySpd;
-    //if(yPos >= m.top())
-    //  ySpd = -ySpd;
-    //if(xPos <= m.right())
-    //  xSpd = -xSpd;
-    //if(xPos >= m.left())
-    //  xSpd = -xSpd;
   }
   
 }

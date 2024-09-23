@@ -20,7 +20,7 @@ class Map
   //  text( map[ int((mapXpos+p.xPos)/250) ][ int((mapYpos+p.yPos)/250) ], 200, 200);
   //}
   
-    void setupMap()
+  void setupMap()
   {
     mapStr += "###############"; //15x15 map
     mapStr += "#             #";
@@ -28,12 +28,12 @@ class Map
     mapStr += "#    ***  $$  #";
     mapStr += "#      ***    #"; // # = trees
     mapStr += "#        ***  #";
-    mapStr += "#    $$   **  #"; // $ = water
-    mapStr += "#   $$$$   ** #";
-    mapStr += "#  $$$$$$  ** #"; // space = grass
-    mapStr += "#  $$$$$$ **  #";
-    mapStr += "#   $$$$  **  #"; // @ = cabin
-    mapStr += "#    $$  **   #";
+    mapStr += "#   $$$   **  #"; // $ = water
+    mapStr += "#  $$$$$   ** #";
+    mapStr += "#  $$$$$   ** #"; // space = grass
+    mapStr += "#  $$$$$  **  #";
+    mapStr += "#   $$$   **  #"; // @ = cabin
+    mapStr += "#       ***   #";
     mapStr += "#  *******    #";
     mapStr += "#             #";
     mapStr += "###############";
