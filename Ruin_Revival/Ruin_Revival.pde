@@ -18,7 +18,6 @@ int score;
 
 int zomTimer = 0;
 
-
 //sound stuff
 //SoundFile backMusic;
 boolean musicOn = false;
@@ -57,10 +56,11 @@ void setup()
   loadGame = false;
   
   p = new Player();
-  z = new Zombies();
+  //for(int i = 0; i < z.zomCount ;i++)
+    z = new Zombies(random(width), random(height));
   m = new Map();
   
-  setupMap();
+  m.setupMap();
   
 }
 
@@ -81,7 +81,7 @@ void draw()
   {
     background(0);
     noCursor();
-    drawMap();
+    m.drawMap();
     p.drawPlayer();
     p.movePlayer();
     z.drawZombie();
@@ -105,7 +105,7 @@ void blockPathing( Player o )
   //look at all blocks
   for( Barrier b: barrier )
   {
-    //if object inside block
+    //if object player block
     if( o.xPos+o.size/2 > b.barrierXpos-b.barrierXsize/2
      && o.xPos-o.size/2 < b.barrierXpos+b.barrierXsize/2
      && o.yPos+o.size/2 > b.barrierYpos-b.barrierYsize/2
@@ -144,6 +144,7 @@ void blockPathing( Player o )
 }
 
 
+<<<<<<< Updated upstream
 void setupMap()
 {
   mapStr += "###############"; //15x15 map
@@ -205,6 +206,8 @@ void drawMap()
     }
     
 }
+=======
+>>>>>>> Stashed changes
 
 
 void drawButtons()
