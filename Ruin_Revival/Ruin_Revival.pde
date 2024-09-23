@@ -43,7 +43,7 @@ void setup()
   load = loadImage("load_button.png");
   tree = loadImage("tree1.png");
   water = loadImage("water1.png");
-  grass = loadImage("grass3.png");
+  grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
   start.resize(450, 0);
