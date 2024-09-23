@@ -1,0 +1,9 @@
+class Cabin
+{
+  
+  public Cabin()
+  {
+    
+  }
+  
+}
