@@ -143,8 +143,6 @@ void blockPathing( Player o )
   }
 }
 
-
-<<<<<<< Updated upstream
 void setupMap()
 {
   mapStr += "###############"; //15x15 map
@@ -206,9 +204,6 @@ void drawMap()
     }
     
 }
-=======
->>>>>>> Stashed changes
-
 
 void drawButtons()
 {
