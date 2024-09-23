@@ -11,6 +11,7 @@ Barrier B;
 PImage start, load, tree, water, grass, cobble, cabin;
 
 boolean startGame, loadGame;
+boolean isCabin = false;
 
 int mapxSize = 15;
 int mapySize = 15;
