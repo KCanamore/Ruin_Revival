@@ -9,7 +9,7 @@ Map m;
 Cabin c;
 Barrier B;
 
-PImage title, start, load, tree, water, grass, cobble, cabin;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
 
 boolean startGame, loadGame;
 boolean isCabin = false;
@@ -43,7 +43,10 @@ void setup()
   title = loadImage("title.png");
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
-  tree = loadImage("tree1.png");
+  tree1 = loadImage("tree1.png");
+  tree2 = loadImage("tree2.png");
+  tree3 = loadImage("tree3.png");
+  tree4 = loadImage("tree4.png");
   water = loadImage("water1.png");
   grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
@@ -51,7 +54,10 @@ void setup()
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
-  tree.resize(250, 0);
+  tree1.resize(250, 0);
+  tree2.resize(250, 0);
+  tree3.resize(250, 0);
+  tree4.resize(250, 0);
   water.resize(250, 0);
   grass.resize(250, 0);
   cobble.resize(250, 0);
