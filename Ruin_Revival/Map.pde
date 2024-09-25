@@ -46,6 +46,8 @@ class Map
         map[j][i] = mapStr.charAt(j+i*15);
         if( map[j][i] == '#' || map[j][i] == '!' || map[j][i] == '%' || map[j][i] == '^' )
           barrier.add( new Barrier(j*250,i*250) );
+        if( map[j][i] == '$' )
+          barrier.add( new Barrier(j*250,i*250) );
       }
     }
   }
