@@ -5,7 +5,7 @@ class Cabin
   public Cabin()
   {
     cabinInside = loadImage("cabin-inside.png");
-    cabinInside.resize(1000, 0);
+    cabinInside.resize(height, 0);
     
   }
   

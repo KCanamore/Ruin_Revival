@@ -13,6 +13,7 @@ PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cab
 
 boolean startGame, loadGame;
 boolean isCabin = false;
+boolean enterCabin = false;
 
 int mapxSize = 15;
 int mapySize = 15;
@@ -69,6 +70,8 @@ void setup()
   //for(int i = 0; i < z.zomCount ;i++)
     z = new Zombies(random(width), random(height));
   m = new Map();
+  c = new Cabin();
+  B = new Barrier(0,0,2);
   
   m.setupMap();
   
@@ -103,6 +106,9 @@ void draw()
       z.moveZombie();
     //  zomTimer = 0;
     //}
+    
+    if(enterCabin)
+      c.drawCabinInside();
     
   }
   
@@ -231,8 +237,8 @@ void keyPressed()
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
     
-  if(B.type == 2 & key == 'e')
-    c.drawCabinInside();
+  if(B.type == 2 & key == 'e' & dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 50)
+    enterCabin = true;
     
   if(key == ' ')
     saveGame();
