@@ -23,20 +23,20 @@ class Map
   void setupMap()
   {
     mapStr += "###############"; //15x15 map
-    mapStr += "#             #";
-    mapStr += "#     @  $$$  #"; // * = cobble
-    mapStr += "#    ***  $$  #";
-    mapStr += "#      ***    #"; // # = trees
-    mapStr += "#        ***  #";
-    mapStr += "#   $$$   **  #"; // $ = water
-    mapStr += "#  $$$$$   ** #";
-    mapStr += "#  $$$$$   ** #"; // space = grass
-    mapStr += "#  $$$$$  **  #";
-    mapStr += "#   $$$   **  #"; // @ = cabin
-    mapStr += "#       ***   #";
-    mapStr += "#  *******    #";
-    mapStr += "#             #";
-    mapStr += "###############";
+    mapStr += "^             !";
+    mapStr += "^     @  $$$  !"; // * = cobble
+    mapStr += "^    ***  $$  !";
+    mapStr += "^      ***    !"; // # = trees
+    mapStr += "^        ***  !";
+    mapStr += "^   $$$   **  !"; // $ = water
+    mapStr += "^  $$$$$   ** !";
+    mapStr += "^  $$$$$   ** !"; // space = grass
+    mapStr += "^  $$$$$  **  !";
+    mapStr += "^   $$$   **  !"; // @ = cabin
+    mapStr += "^       ***   !";
+    mapStr += "^  *******    !";
+    mapStr += "^             !";
+    mapStr += "%%%%%%%%%%%%%%%";
     
     //Populates char array with the characters of mapStr
     for( int i = 0; i < map.length; i++ )
@@ -44,10 +44,17 @@ class Map
       for( int j = 0; j < map[0].length; j++ )
       {
         map[j][i] = mapStr.charAt(j+i*15);
+<<<<<<< HEAD
         if( map[j][i] == '#' )
           barrier.add( new Barrier(j*250,i*250, 1) );
         if( map[j][i] == '@' )
           barrier.add( new Barrier(j*250,i*250, 2) );
+=======
+        if( map[j][i] == '#' || map[j][i] == '!' || map[j][i] == '%' || map[j][i] == '^' )
+          barrier.add( new Barrier(j*250,i*250) );
+        if( map[j][i] == '$' )
+          barrier.add( new Barrier(j*250,i*250) );
+>>>>>>> c800b699e732383115bcbc7b0c418e8d1d9a86ee
       }
     }
   }
@@ -65,7 +72,22 @@ class Map
         if(map[j][i]=='#')
         {
           image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(tree, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(tree1, m.mapXpos+j*250,m.mapYpos+i*250);
+        }
+        else if(map[j][i]=='!')
+        {
+          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(tree2, m.mapXpos+j*250,m.mapYpos+i*250);
+        }
+        else if(map[j][i]=='%')
+        {
+          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(tree3, m.mapXpos+j*250,m.mapYpos+i*250);
+        }
+        else if(map[j][i]=='^')
+        {
+          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(tree4, m.mapXpos+j*250,m.mapYpos+i*250);
         }
         else if(map[j][i]==' ')
           image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
