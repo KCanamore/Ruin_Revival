@@ -13,7 +13,7 @@ class Zombies
     yPos = y;
 
     size = 50;
-    
+
     zomCount = 2;
 
     xSpd = 0;
@@ -35,40 +35,42 @@ class Zombies
 
     xSpd *= 0.80;
     ySpd *= 0.80;
-    if(dist(p.xPos, p.yPos, z.xPos, z.yPos)< height/2 && dist(p.xPos, p.yPos, z.xPos, z.yPos)< width/2)
+    for (int i = 0; i < z.size(); i++)
     {
-      if (p.xPos < xPos)
+      if (dist(p.xPos, p.yPos, z.get(i).xPos, z.get(i).yPos)< height/2 && dist(p.xPos, p.yPos, z.get(i).xPos, z.get(i).yPos)< width/2)
       {
-        left = true;
+        if (p.xPos < xPos)
+        {
+          left = true;
+          right = false;
+        }
+
+        if (p.xPos > xPos)
+        {
+          right = true;
+          left = false;
+        }
+
+        if (p.yPos < yPos)
+        {
+          up = true;
+          down = false;
+        }
+
+        if (p.yPos > yPos)
+        {
+          down = true;
+          up = false;
+        }
+      } 
+      else
+      {
+        up = false;
+        down = false;
+        left = false;
         right = false;
       }
-  
-      if (p.xPos > xPos)
-      {
-        right = true;
-        left = false;
-      }
-  
-      if (p.yPos < yPos)
-      {
-        up = true;
-        down = false;
-      }
-  
-      if (p.yPos > yPos)
-      {
-        down = true;
-        up = false;
-      }
     }
-    else
-    {
-     up = false;
-     down = false; 
-     left = false; 
-     right = false; 
-    }
-
     if (left)
       xSpd -= 0.5;
     if (right)

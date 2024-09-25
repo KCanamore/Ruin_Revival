@@ -46,7 +46,8 @@ class Player
     {
       xPos = width-250;
       m.mapXpos -= xSpd;
-      z.xPos -= xSpd;
+      for (int i = 0; i < z.size(); i++)
+        z.get(i).xPos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
     }
@@ -54,7 +55,8 @@ class Player
     {
       xPos = 250;
       m.mapXpos -= xSpd;
-      z.xPos -= xSpd;
+      for (int i = 0; i < z.size(); i++)
+        z.get(i).xPos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
     }
@@ -62,7 +64,8 @@ class Player
     {
       yPos = height-250;
       m.mapYpos -= ySpd;
-      z.yPos -= ySpd;
+      for (int i = 0; i < z.size(); i++)
+        z.get(i).yPos -= ySpd;
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
     }
@@ -70,7 +73,8 @@ class Player
     {
       yPos = 250;
       m.mapYpos -= ySpd;
-      z.yPos -= ySpd;
+      for (int i = 0; i < z.size(); i++)
+        z.get(i).yPos -= ySpd;
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
     }
