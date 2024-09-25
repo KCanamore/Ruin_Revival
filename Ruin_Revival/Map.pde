@@ -45,7 +45,9 @@ class Map
       {
         map[j][i] = mapStr.charAt(j+i*15);
         if( map[j][i] == '#' )
-          barrier.add( new Barrier(j*250,i*250) );
+          barrier.add( new Barrier(j*250,i*250, 1) );
+        if( map[j][i] == '@' )
+          barrier.add( new Barrier(j*250,i*250, 2) );
       }
     }
   }
@@ -75,6 +77,7 @@ class Map
         {
           image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
           image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
+          //barrier.add( new Barrier(j*250,i*250, 2) );
         }  
       }
       

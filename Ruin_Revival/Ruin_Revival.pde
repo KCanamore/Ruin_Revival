@@ -6,6 +6,7 @@ import processing.sound.*;
 Player p = new Player();
 Zombies z;
 Map m;
+Cabin c;
 Barrier B;
 
 PImage title, start, load, tree, water, grass, cobble, cabin;
@@ -96,6 +97,7 @@ void draw()
       z.moveZombie();
     //  zomTimer = 0;
     //}
+    
   }
   
   zomTimer++;
@@ -222,6 +224,9 @@ void keyPressed()
     p.up = true;
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
+    
+  if(B.type == 2 & key == 'e')
+    c.drawCabinInside();
     
   if(key == ' ')
     saveGame();
