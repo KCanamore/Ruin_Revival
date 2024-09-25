@@ -44,17 +44,17 @@ class Map
       for( int j = 0; j < map[0].length; j++ )
       {
         map[j][i] = mapStr.charAt(j+i*15);
-<<<<<<< HEAD
+
         if( map[j][i] == '#' )
           barrier.add( new Barrier(j*250,i*250, 1) );
         if( map[j][i] == '@' )
           barrier.add( new Barrier(j*250,i*250, 2) );
-=======
+
         if( map[j][i] == '#' || map[j][i] == '!' || map[j][i] == '%' || map[j][i] == '^' )
           barrier.add( new Barrier(j*250,i*250) );
         if( map[j][i] == '$' )
           barrier.add( new Barrier(j*250,i*250) );
->>>>>>> c800b699e732383115bcbc7b0c418e8d1d9a86ee
+
       }
     }
   }
