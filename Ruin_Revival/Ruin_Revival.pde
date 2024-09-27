@@ -4,7 +4,7 @@
 import processing.sound.*;
 
 Player p = new Player();
-Zombies z;
+ArrayList<Zombies> z = new ArrayList<Zombies>();
 Map m;
 Cabin c;
 Barrier B;
@@ -67,8 +67,10 @@ void setup()
   loadGame = false;
   
   p = new Player();
-  //for(int i = 0; i < z.zomCount ;i++)
-    z = new Zombies(random(width), random(height));
+  for(int i = 0; i < 10 ;i++)
+  {
+    z.add( new Zombies( random(width), random(height) ) );
+  }
   m = new Map();
   c = new Cabin();
   B = new Barrier(0,0,2);
@@ -97,15 +99,12 @@ void draw()
     m.drawMap();
     p.drawPlayer();
     p.movePlayer();
-    z.drawZombie();
-    
+    for(int i = 0; i < 10 ;i++)
+  {
+    z.get(i).drawZombie();
+    z.get(i).moveZombie();
+  } 
     blockPathing( p );
-
-    //if(zomTimer >= 22)
-    //{
-      z.moveZombie();
-    //  zomTimer = 0;
-    //}
     
     if(enterCabin)
       c.drawCabinInside();
