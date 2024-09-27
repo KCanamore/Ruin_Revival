@@ -97,6 +97,8 @@ void draw()
     background(0);
     noCursor();
     m.drawMap();
+    if(enterCabin)
+      c.drawCabinInside();
     p.drawPlayer();
     p.movePlayer();
     for(int i = 0; i < 10 ;i++)
@@ -106,14 +108,15 @@ void draw()
   } 
     blockPathing( p );
     
-    if(enterCabin)
-      c.drawCabinInside();
     
   }
   
   zomTimer++;
-  
-  println("barrier: "+barrier.size());
+  push();
+  textSize(50);
+  fill(255);
+  text("barrier: "+barrier.size(),200,200);
+  pop();
 }
 
 void blockPathing( Player o )
@@ -253,4 +256,8 @@ void keyReleased()
     p.up = false;
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
+    
+  if(B.type == 2 & key == 'e' & dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 50)
+    enterCabin = false;
+
 }
