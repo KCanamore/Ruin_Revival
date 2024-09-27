@@ -35,7 +35,6 @@ void setup()
 {
   
   fullScreen();
-  noSmooth();
   
   //backMusic = new SoundFile(this, "music.mp3");
   
@@ -102,7 +101,6 @@ void draw()
       c.drawCabinInside();
     p.drawPlayer();
     p.movePlayer();
-    B.drawBarrier();
     for(int i = 0; i < 10 ;i++)
   {
     z.get(i).drawZombie();
@@ -118,7 +116,7 @@ void draw()
   //push();
   //textSize(50);
   //fill(255);
-  //text("barriers: "+barrier.size(),200,200);
+  //text("barrier: "+barrier.size(),200,200);
   //pop();
 }
 
@@ -244,11 +242,6 @@ void keyPressed()
     
   if(B.type == 2 & key == 'e' & dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 50)
     enterCabin = true;
-  if( key == 'e' )
-  {
-    println( B.barrierXpos + " " + B.barrierYpos );
-    println( p.xPos + " " + p.yPos );
-  }
     
   if(key == ' ')
     saveGame();
