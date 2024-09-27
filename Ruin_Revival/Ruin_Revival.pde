@@ -35,6 +35,7 @@ void setup()
 {
   
   fullScreen();
+  noSmooth();
   
   //backMusic = new SoundFile(this, "music.mp3");
   
