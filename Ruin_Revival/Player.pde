@@ -50,6 +50,7 @@ class Player
         z.get(i).xPos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
+      B.barrierXpos -= xSpd;
     }
     if(xPos <= 250)
     {

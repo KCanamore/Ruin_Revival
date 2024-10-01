@@ -96,7 +96,6 @@ class Map
         {
           image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
           image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
-          barrier.add( new Barrier(j*250,i*250, 2) );
         }  
       }
       
