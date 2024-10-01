@@ -47,7 +47,10 @@ class Map
         if( map[j][i] == '#' )
           barrier.add( new Barrier(j*250,i*250, 1) );
         if( map[j][i] == '@' )
+        {
           barrier.add( new Barrier(j*250,i*250, 2) );
+          B = new Barrier(j*250,i*250,2);
+        }
         if( map[j][i] == '#' || map[j][i] == '!' || map[j][i] == '%' || map[j][i] == '^' )
           barrier.add( new Barrier(j*250,i*250, 1) );
         if( map[j][i] == '$' )

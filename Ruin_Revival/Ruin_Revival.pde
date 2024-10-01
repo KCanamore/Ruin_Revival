@@ -74,7 +74,7 @@ void setup()
   }
   m = new Map();
   c = new Cabin();
-  B = new Barrier(0,0,2);
+  
   
   m.setupMap();
   
@@ -98,9 +98,6 @@ void draw()
     background(0);
     noCursor();
     m.drawMap();
-    if(enterCabin)
-      c.drawCabinInside();
-    p.drawPlayer();
     p.movePlayer();
     B.drawBarrier();
     for(int i = 0; i < 10 ;i++)
@@ -108,6 +105,9 @@ void draw()
     z.get(i).drawZombie();
     z.get(i).moveZombie();
   } 
+    if(enterCabin)
+      c.drawCabinInside();
+    p.drawPlayer();
     blockPathing( p );
     
     
@@ -242,14 +242,10 @@ void keyPressed()
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
     
-  if(B.type == 2 & key == 'e' & dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 50)
-    enterCabin = true;
-  if( key == 'e' )
-  {
-    println( B.barrierXpos + " " + B.barrierYpos );
-    println( p.xPos + " " + p.yPos );
-  }
-    
+  if(B.type == 2 && key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 300)
+    enterCabin = true;    
+  //if(B.type == 2 & key == 'e' & enterCabin)
+  //  enterCabin = false;
   if(key == ' ')
     saveGame();
 }
@@ -265,7 +261,5 @@ void keyReleased()
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
     
-  if(B.type == 2 & key == 'e' & dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 50)
-    enterCabin = false;
 
 }

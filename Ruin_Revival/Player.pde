@@ -60,6 +60,7 @@ class Player
         z.get(i).xPos -= xSpd;
       for(Barrier b: barrier )
         b.barrierXpos -= xSpd;
+      B.barrierXpos -= xSpd;
     }
     if(yPos >= height-250)
     {
@@ -69,6 +70,7 @@ class Player
         z.get(i).yPos -= ySpd;
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
+      B.barrierYpos -= ySpd;
     }
     if(yPos <= 250)
     {
@@ -78,6 +80,7 @@ class Player
         z.get(i).yPos -= ySpd;
       for(Barrier b: barrier )
         b.barrierYpos -= ySpd;
+      B.barrierYpos -= ySpd;
     }
   }
   
