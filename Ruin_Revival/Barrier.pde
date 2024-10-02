@@ -20,5 +20,6 @@ class Barrier
     rect( barrierXpos, barrierYpos, barrierXsize, barrierYsize );
     fill(255);
     text( "X: " + barrierXpos + "\nY: " + barrierYpos, barrierXpos, barrierYpos );
+    text( type, barrierXpos, barrierYpos+ 50 );
   }
 }
