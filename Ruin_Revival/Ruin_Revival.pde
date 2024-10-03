@@ -98,7 +98,7 @@ void draw()
     noCursor();
     m.drawMap();
     p.movePlayer();
-    B.drawBarrier();
+    //B.drawBarrier();
     for(int i = 0; i < 10 ;i++)
     {
       z.get(i).drawZombie();
