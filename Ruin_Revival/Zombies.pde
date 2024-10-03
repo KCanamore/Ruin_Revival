@@ -36,7 +36,7 @@ class Zombies
     xSpd *= 0.80;
     ySpd *= 0.80;
 
-    if (dist(p.xPos, p.yPos, xPos, yPos)< height/2 && dist(p.xPos, p.yPos, xPos, yPos)< width/2)
+    if (inCabin == false && dist(p.xPos, p.yPos, xPos, yPos)< height/2 && dist(p.xPos, p.yPos, xPos, yPos)< width/2)
     {
       if (p.xPos < xPos)
       {

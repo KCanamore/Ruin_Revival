@@ -12,12 +12,12 @@ Barrier B;
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
 
 boolean startGame, loadGame;
-boolean isCabin = false;
-boolean enterCabin = false;
 
 int mapxSize = 15;
 int mapySize = 15;
 int score;
+
+boolean inCabin = false;
 
 int zomTimer = 0;
 
@@ -81,9 +81,7 @@ void setup()
 }
 
 void draw()
-{
-  background(0);
-  
+{ 
   //music
   if(musicOn == true)
   {
@@ -91,8 +89,9 @@ void draw()
     musicOn = false;
   }
   
-  drawButtons();
-      
+  background(0);
+  drawButtons();  
+  
   if(startGame || loadGame)
   {
     background(0);
@@ -101,14 +100,18 @@ void draw()
     p.movePlayer();
     B.drawBarrier();
     for(int i = 0; i < 10 ;i++)
-  {
-    z.get(i).drawZombie();
-    z.get(i).moveZombie();
-  } 
-    if(enterCabin)
+    {
+      z.get(i).drawZombie();
+      z.get(i).moveZombie();
+    } 
+    if( inCabin == true )
+    {
+      background(0);
       c.drawCabinInside();
+    }
     p.drawPlayer();
     blockPathing( p );
+    blockPathingZom( z );
     
     
   }
@@ -161,6 +164,53 @@ void blockPathing( Player o )
       if( side == 3 ) o.yPos = b.barrierYpos+b.barrierYsize/2+o.size/2;
       //Only one block activates per call
       //return;
+    }
+  }
+}
+
+void blockPathingZom( ArrayList<Zombies> Z )
+{
+  ArrayList<Zombies> zom = Z;
+  //look at all blocks
+  for(int i = 0; i < z.size(); i++)
+  {
+    for( Barrier b: barrier )
+    {
+      //if object zombie block
+      if( zom.get(i).xPos+zom.get(i).size/2 > b.barrierXpos-b.barrierXsize/2
+       && zom.get(i).xPos-zom.get(i).size/2 < b.barrierXpos+b.barrierXsize/2
+       && zom.get(i).yPos+zom.get(i).size/2 > b.barrierYpos-b.barrierYsize/2
+       && zom.get(i).yPos-zom.get(i).size/2 < b.barrierYpos+b.barrierYsize/2 )
+      {
+        //find nearest side (default to left)
+        int side  = 0; //0-left, 1-top, 2-right, 3-bottom
+        float dist = dist(zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos-b.barrierXsize/2, b.barrierYpos); //distance from last check
+        //check top
+        if( dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos, b.barrierYpos-b.barrierYsize/2 ) < dist )
+        {
+          dist = dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos, b.barrierYpos-b.barrierYsize/2 );
+          side = 1;
+        }
+        //check right
+        if( dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos+b.barrierXsize/2, b.barrierYpos ) < dist )
+        {
+          dist = dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos+b.barrierXsize/2, b.barrierYpos );
+          side = 2;
+        }
+        //check bottom
+        if( dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos, b.barrierYpos+b.barrierYsize/2 ) < dist )
+        {
+          dist = dist( zom.get(i).xPos, zom.get(i).yPos, b.barrierXpos, b.barrierYpos+b.barrierYsize/2 );
+          side = 3;
+        }
+        //Set object to that side of block
+        if( side == 0 ) zom.get(i).xPos = b.barrierXpos-b.barrierXsize/2-zom.get(i).size/2;
+        if( side == 1 ) zom.get(i).yPos = b.barrierYpos-b.barrierYsize/2-zom.get(i).size/2;
+        if( side == 2 ) zom.get(i).xPos = b.barrierXpos+b.barrierXsize/2+zom.get(i).size/2;
+        if( side == 3 ) zom.get(i).yPos = b.barrierYpos+b.barrierYsize/2+zom.get(i).size/2;
+        //Only one block activates per call
+        //return;
+      }
     }
   }
 }
@@ -241,11 +291,16 @@ void keyPressed()
     p.up = true;
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
-    
-  if(B.type == 2 && key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 300)
-    enterCabin = true;    
-  //if(B.type == 2 & key == 'e' & enterCabin)
-  //  enterCabin = false;
+     
+  if(key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 300)
+    inCabin = true;
+  else if( inCabin == true && key == 'e')
+  {
+    startGame = true;
+    loadGame = true;
+    inCabin = false;
+  }
+  
   if(key == ' ')
     saveGame();
 }

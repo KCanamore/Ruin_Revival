@@ -11,7 +11,8 @@ class Cabin
   
   void drawCabinInside()
   {
-    image(cabinInside, width/2, height/2);
+      
+      image(cabinInside, width/2, height/2);
   }
   
 }
