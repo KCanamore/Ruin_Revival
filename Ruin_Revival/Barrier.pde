@@ -11,7 +11,7 @@ class Barrier
     barrierXsize = 250;
     barrierYsize = 250;
     type = t;
-    println( "A " + type + " barrier was created!");
+    //println( "A " + type + " barrier was created!");
   }
   
   void drawBarrier()
