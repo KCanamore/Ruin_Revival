@@ -90,7 +90,7 @@ void draw()
   }
   
   background(0);
-  drawButtons();  
+  drawButtons();
   
   if(startGame || loadGame)
   {
@@ -123,6 +123,10 @@ void draw()
   //fill(255);
   //text("barriers: "+barrier.size(),200,200);
   //pop();
+  println("height: "+ height);
+  println("width: " + width);
+  println("player xPos: " + p.xPos);
+  println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
@@ -292,7 +296,7 @@ void keyPressed()
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
      
-  if(key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 300)
+  if(key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
     inCabin = true;
   else if( inCabin == true && key == 'e')
   {

@@ -16,9 +16,9 @@ class Barrier
   
   void drawBarrier()
   {
-    fill(0);
-    rect( barrierXpos, barrierYpos, barrierXsize, barrierYsize );
     fill(255);
+    rect( barrierXpos, barrierYpos, barrierXsize, barrierYsize );
+    fill(0);
     text( "X: " + barrierXpos + "\nY: " + barrierYpos, barrierXpos, barrierYpos );
     text( type, barrierXpos, barrierYpos+ 50 );
   }

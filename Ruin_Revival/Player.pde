@@ -42,7 +42,7 @@ class Player
     if(down)
       ySpd += 2;
       
-    if(xPos > width-250)
+    if(!inCabin && xPos > width-250)
     {
       xPos = width-250;
       m.mapXpos -= xSpd;
@@ -52,7 +52,7 @@ class Player
         b.barrierXpos -= xSpd;
       B.barrierXpos -= xSpd;
     }
-    if(xPos <= 250)
+    if(!inCabin && xPos <= 250)
     {
       xPos = 250;
       m.mapXpos -= xSpd;
@@ -62,7 +62,7 @@ class Player
         b.barrierXpos -= xSpd;
       B.barrierXpos -= xSpd;
     }
-    if(yPos >= height-250)
+    if(!inCabin && yPos >= height-250)
     {
       yPos = height-250;
       m.mapYpos -= ySpd;
@@ -72,7 +72,7 @@ class Player
         b.barrierYpos -= ySpd;
       B.barrierYpos -= ySpd;
     }
-    if(yPos <= 250)
+    if(!inCabin && yPos <= 250)
     {
       yPos = 250;
       m.mapYpos -= ySpd;
