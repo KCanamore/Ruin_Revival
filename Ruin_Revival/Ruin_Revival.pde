@@ -8,6 +8,7 @@ ArrayList<Zombies> z = new ArrayList<Zombies>();
 Map m;
 Cabin c;
 Barrier B;
+Weapon w;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
 
@@ -33,6 +34,8 @@ String mapStr = "";
 
 void setup()
 {
+  
+  w = new Weapon("bat", ".png");
   
   fullScreen();
   noSmooth();
@@ -98,6 +101,7 @@ void draw()
     noCursor();
     m.drawMap();
     p.movePlayer();
+    w.drawWeapon(p.xPos, p.yPos);
     //B.drawBarrier();
     for(int i = 0; i < 10 ;i++)
     {
@@ -317,4 +321,10 @@ void keyReleased()
     p.down = false;
     
 
+}
+
+void mousePressed()
+{
+ if(startGame || loadGame)
+    w.attack(); 
 }
