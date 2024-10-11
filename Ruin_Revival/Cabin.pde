@@ -15,14 +15,14 @@ class Cabin
       if(inCabin)
       {
         //left
-        barrier.add( new Barrier(420,250, 1) );
-        barrier.add( new Barrier(420,500, 1) );
-        barrier.add( new Barrier(420,750, 1) );
+        barrier.add( new Barrier(420,(250/mapScale),  1) );
+        barrier.add( new Barrier(420,500,  1) );
+        barrier.add( new Barrier(420,750,  1) );
         barrier.add( new Barrier(420,1000, 1) );
         barrier.add( new Barrier(420,1250, 1) );
         
         //right
-        barrier.add( new Barrier(1500,250, 1) );
+        barrier.add( new Barrier(1500,(250/mapScale), 1) );
         barrier.add( new Barrier(1500,500, 1) );
         barrier.add( new Barrier(1500,750, 1) );
         barrier.add( new Barrier(1500,1000, 1) );

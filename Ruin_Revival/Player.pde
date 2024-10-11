@@ -42,9 +42,9 @@ class Player
     if(down)
       ySpd += 2;
       
-    if(!inCabin && xPos > width-250)
+    if(!inCabin && xPos > width-(250/mapScale))
     {
-      xPos = width-250;
+      xPos = width-(250/mapScale);
       m.mapXpos -= xSpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).xPos -= xSpd;
@@ -52,9 +52,9 @@ class Player
         b.barrierXpos -= xSpd;
       B.barrierXpos -= xSpd;
     }
-    if(!inCabin && xPos <= 250)
+    if(!inCabin && xPos <= (250/mapScale))
     {
-      xPos = 250;
+      xPos = (250/mapScale);
       m.mapXpos -= xSpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).xPos -= xSpd;
@@ -62,9 +62,9 @@ class Player
         b.barrierXpos -= xSpd;
       B.barrierXpos -= xSpd;
     }
-    if(!inCabin && yPos >= height-250)
+    if(!inCabin && yPos >= height-(250/mapScale))
     {
-      yPos = height-250;
+      yPos = height-(250/mapScale);
       m.mapYpos -= ySpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).yPos -= ySpd;
@@ -72,9 +72,9 @@ class Player
         b.barrierYpos -= ySpd;
       B.barrierYpos -= ySpd;
     }
-    if(!inCabin && yPos <= 250)
+    if(!inCabin && yPos <= (250/mapScale))
     {
-      yPos = 250;
+      yPos = (250/mapScale);
       m.mapYpos -= ySpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).yPos -= ySpd;

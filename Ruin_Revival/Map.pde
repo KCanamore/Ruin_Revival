@@ -6,8 +6,8 @@ class Map
   
   public Map()
   {
-    gridXpos = p.xPos/250;
-    gridYpos = p.yPos/250;
+    gridXpos = p.xPos/(250/mapScale);
+    gridYpos = p.yPos/(250/mapScale);
     
     mapXpos = 0;
     mapYpos = 0;
@@ -17,7 +17,7 @@ class Map
   //void showTileType()
   //{
   //  fill(200,0,0);
-  //  text( map[ int((mapXpos+p.xPos)/250) ][ int((mapYpos+p.yPos)/250) ], 200, 200);
+  //  text( map[ int((mapXpos+p.xPos)/(250/mapScale)) ][ int((mapYpos+p.yPos)/(250/mapScale)) ], 200, 200);
   //}
   
   void setupMap()
@@ -45,16 +45,16 @@ class Map
       {
         map[j][i] = mapStr.charAt(j+i*15);
         if( map[j][i] == '#' )
-          barrier.add( new Barrier(j*250,i*250, 1) );
+          barrier.add( new Barrier(j*(250/mapScale),i*(250/mapScale), 1) );
         if( map[j][i] == '@' )
         {
-          barrier.add( new Barrier(j*250,i*250, 2) );
-          B = new Barrier(j*250,i*250,2);
+          barrier.add( new Barrier(j*(250/mapScale),i*(250/mapScale), 2) );
+          B = new Barrier(j*(250/mapScale),i*(250/mapScale),2);
         }
         if( map[j][i] == '#' || map[j][i] == '!' || map[j][i] == '%' || map[j][i] == '^' )
-          barrier.add( new Barrier(j*250,i*250, 1) );
+          barrier.add( new Barrier(j*(250/mapScale),i*(250/mapScale), 1) );
         if( map[j][i] == '$' )
-          barrier.add( new Barrier(j*250,i*250, 1) );
+          barrier.add( new Barrier(j*(250/mapScale),i*(250/mapScale), 1) );
       }
     }
   }
@@ -71,34 +71,34 @@ class Map
       {
         if(map[j][i]=='#')
         {
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(tree1, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
+          image(tree1, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         }
         else if(map[j][i]=='!')
         {
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(tree2, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
+          image(tree2, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         }
         else if(map[j][i]=='%')
         {
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(tree3, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
+          image(tree3, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         }
         else if(map[j][i]=='^')
         {
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(tree4, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
+          image(tree4, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         }
         else if(map[j][i]==' ')
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         else if(map[j][i]=='$')
-          image(water, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(water, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         else if(map[j][i]=='*')
-          image(cobble, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(cobble, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         else if(map[j][i]=='@')
         {
-          image(grass, m.mapXpos+j*250,m.mapYpos+i*250);
-          image(cabin, m.mapXpos+j*250,m.mapYpos+i*250);
+          image(grass, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
+          image(cabin, m.mapXpos+j*(250/mapScale),m.mapYpos+i*(250/mapScale));
         }  
       }
       

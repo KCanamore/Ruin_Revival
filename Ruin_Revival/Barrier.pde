@@ -8,8 +8,8 @@ class Barrier
   {
     barrierXpos = x;
     barrierYpos = y;
-    barrierXsize = 250;
-    barrierYsize = 250;
+    barrierXsize = (250/mapScale);
+    barrierYsize = (250/mapScale);
     type = t;
     //println( "A " + type + " barrier was created!");
   }

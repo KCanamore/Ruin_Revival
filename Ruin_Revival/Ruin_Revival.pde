@@ -6,6 +6,7 @@ import processing.sound.*;
 Player p = new Player();
 ArrayList<Zombies> z = new ArrayList<Zombies>();
 Map m;
+MiniMap M;
 Cabin c;
 Barrier B;
 Weapon w;
@@ -17,6 +18,8 @@ boolean startGame, loadGame;
 int mapxSize = 15;
 int mapySize = 15;
 int score;
+int mapScale = 1;
+int miniMapScale = 20;
 
 boolean inCabin = false;
 
@@ -35,7 +38,7 @@ String mapStr = "";
 void setup()
 {
   
-  w = new Weapon("bat", ".png");
+  w = new Weapon("waifu_katana", ".png");
   
   fullScreen();
   noSmooth();
@@ -59,14 +62,14 @@ void setup()
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
-  tree1.resize(250, 0);
-  tree2.resize(250, 0);
-  tree3.resize(250, 0);
-  tree4.resize(250, 0);
-  water.resize(250, 0);
-  grass.resize(250, 0);
-  cobble.resize(250, 0);
-  cabin.resize(250, 0);
+  tree1.resize((250/mapScale), 0);
+  tree2.resize((250/mapScale), 0);
+  tree3.resize((250/mapScale), 0);
+  tree4.resize((250/mapScale), 0);
+  water.resize((250/mapScale), 0);
+  grass.resize((250/mapScale), 0);
+  cobble.resize((250/mapScale), 0);
+  cabin.resize((250/mapScale), 0);
   startGame = false;
   loadGame = false;
   
@@ -76,6 +79,7 @@ void setup()
     z.add( new Zombies( random(width), random(height) ) );
   }
   m = new Map();
+  M = new MiniMap();
   c = new Cabin();
   
   
@@ -99,6 +103,7 @@ void draw()
   {
     background(0);
     noCursor();
+    M.drawMiniMap();
     m.drawMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
@@ -300,9 +305,9 @@ void keyPressed()
   if(key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
      
-  if(key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
+  if(key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= (250/mapScale))
     inCabin = true;
-  else if( inCabin == true && key == 'e')
+  else if( inCabin == true && p.yPos > 965 && key == 'e')
   {
     startGame = true;
     loadGame = true;
