@@ -8,8 +8,8 @@ class MiniMap
     gridXpos = p.xPos/(250/miniMapScale);
     gridYpos = p.yPos/(250/miniMapScale);
     
-    miniMapXpos = 0;
-    miniMapYpos = 0;
+    miniMapXpos = 150;
+    miniMapYpos = 150;
 
   }
   
@@ -21,28 +21,28 @@ class MiniMap
   
   void setupMiniMap()
   {
-    mapStr += "###############"; // 15x15 map
-    mapStr += "^             !";
-    mapStr += "^     @  $$$  !"; // * = cobble
-    mapStr += "^    ***  $$  !";
-    mapStr += "^      ***    !"; // # = trees
-    mapStr += "^        ***  !";
-    mapStr += "^   $$$   **  !"; // $ = water
-    mapStr += "^  $$$$$   ** !";
-    mapStr += "^  $$$$$   ** !"; // space = grass
-    mapStr += "^  $$$$$  **  !";
-    mapStr += "^   $$$   **  !"; // @ = cabin
-    mapStr += "^       ***   !";
-    mapStr += "^  *******    !";
-    mapStr += "^             !";
-    mapStr += "%%%%%%%%%%%%%%%";
+    miniMapStr += "###############"; // 15x15 map
+    miniMapStr += "^             !";
+    miniMapStr += "^     @  $$$  !"; // * = cobble
+    miniMapStr += "^    ***  $$  !";
+    miniMapStr += "^      ***    !"; // # = trees
+    miniMapStr += "^        ***  !";
+    miniMapStr += "^   $$$   **  !"; // $ = water
+    miniMapStr += "^  $$$$$   ** !";
+    miniMapStr += "^  $$$$$   ** !"; // space = grass
+    miniMapStr += "^  $$$$$  **  !";
+    miniMapStr += "^   $$$   **  !"; // @ = cabin
+    miniMapStr += "^       ***   !";
+    miniMapStr += "^  *******    !";
+    miniMapStr += "^             !";
+    miniMapStr += "%%%%%%%%%%%%%%%";
     
-    //Populates char array with the characters of mapStr
-    for( int i = 0; i < map.length; i++ )
+    //Populates char array with the characters of miniMapStr
+    for( int i = 0; i < miniMap.length; i++ )
     {
-      for( int j = 0; j < map[0].length; j++ )
+      for( int j = 0; j < miniMap[0].length; j++ )
       {
-        map[j][i] = mapStr.charAt(j+i*15);
+        map[j][i] = miniMapStr.charAt(j+i*15);
         if( map[j][i] == '#' )
           barrier.add( new Barrier(j*(250/miniMapScale),i*(250/miniMapScale), 1) );
         if( map[j][i] == '@' )
@@ -70,34 +70,34 @@ class MiniMap
       {
         if(map[j][i]=='#')
         {
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
-          image(tree1, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
+          image(tree1, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         }
         else if(map[j][i]=='!')
         {
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
-          image(tree2, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
+          image(tree2, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         }
         else if(map[j][i]=='%')
         {
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
-          image(tree3, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
+          image(tree3, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         }
         else if(map[j][i]=='^')
         {
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
-          image(tree4, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
+          image(tree4, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         }
         else if(map[j][i]==' ')
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         else if(map[j][i]=='$')
-          image(water, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(water, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         else if(map[j][i]=='*')
-          image(cobble, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(cobble, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         else if(map[j][i]=='@')
         {
-          image(grass, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
-          image(cabin, m.mapXpos+j*(250/miniMapScale),m.mapYpos+i*(250/miniMapScale));
+          image(grass, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
+          image(cabin, miniMapXpos+j*(250/miniMapScale),miniMapYpos+i*(250/miniMapScale));
         }  
       }
       

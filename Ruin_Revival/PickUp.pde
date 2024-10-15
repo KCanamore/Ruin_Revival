@@ -4,7 +4,7 @@ class PickUp
   float xPos, yPos;
   String name;
   boolean isPickedUp = false;
-  Item item = new Item();
+  //Item item = new Item();
   
   public PickUp(float x, float y, String n, Item i)
   {
@@ -12,7 +12,7 @@ class PickUp
     xPos = x;
     yPos = y;
     name = n;
-    item = i;
+    //item = i;
     
   }
   
