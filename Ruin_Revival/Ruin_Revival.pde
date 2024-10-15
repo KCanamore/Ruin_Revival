@@ -1,6 +1,9 @@
 //Xavier, Kanon, Casey
 //zombie apocolyps game
 
+//kelp shake as heals
+//diet dr kelp as heart
+
 import processing.sound.*;
 
 Player p = new Player();
