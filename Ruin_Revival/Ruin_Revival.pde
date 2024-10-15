@@ -308,7 +308,7 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
-  if (key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= (250/mapScale))
+  if (key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
     inCabin = true;
   else if ( inCabin == true && p.yPos > 965 && key == 'e')
   {
