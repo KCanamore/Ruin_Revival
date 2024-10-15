@@ -84,6 +84,7 @@ void setup()
   
   
   m.setupMap();
+  M.setupMiniMap();
   
 }
 
@@ -103,8 +104,8 @@ void draw()
   {
     background(0);
     noCursor();
-    M.drawMiniMap();
     m.drawMap();
+    M.drawMiniMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     //B.drawBarrier();
