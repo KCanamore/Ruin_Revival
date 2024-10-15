@@ -1,16 +1,15 @@
 class MiniMap
 {
-  
   float gridXpos, gridYpos;
-  float mapXpos, mapYpos;
+  float miniMapXpos, miniMapYpos;
   
   public MiniMap()
   {
     gridXpos = p.xPos/(250/miniMapScale);
     gridYpos = p.yPos/(250/miniMapScale);
     
-    mapXpos = 0;
-    mapYpos = 0;
+    miniMapXpos = 0;
+    miniMapYpos = 0;
 
   }
   
@@ -22,7 +21,7 @@ class MiniMap
   
   void setupMiniMap()
   {
-    mapStr += "###############"; //15x15 map
+    mapStr += "###############"; // 15x15 map
     mapStr += "^             !";
     mapStr += "^     @  $$$  !"; // * = cobble
     mapStr += "^    ***  $$  !";
