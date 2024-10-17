@@ -103,8 +103,8 @@ void draw()
   if (startGame || loadGame)
   {
     background(0);
-    w.findDangerZone(100);
-    //noCursor();
+    w.findDangerZone(90);
+    noCursor();
     m.drawMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
@@ -293,9 +293,12 @@ void mouseClicked()
     musicOn = true;
   }
   for (int i = 0; i < z.size(); i++)
-    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < 40 )
+    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < 60 )
     {
       z.get(i).hurt = true;
+      z.get(i).health -= 5;
+      if(z.get(i).health == 0)
+        z.remove(i);
     }
 }
 

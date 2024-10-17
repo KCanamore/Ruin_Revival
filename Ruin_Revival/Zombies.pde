@@ -19,6 +19,7 @@ class Zombies
 
     xSpd = 0;
     ySpd = 0;
+    health = 15;
   }
 
   void drawZombie()
@@ -30,6 +31,7 @@ class Zombies
       fill(0);
       
     circle(xPos, yPos, size);
+    
   }
 
   void moveZombie()
