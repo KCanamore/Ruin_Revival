@@ -3,6 +3,7 @@
 
 //kelp shake as heals
 //diet dr kelp as heart
+//kelp soda play diet dr kelp sound
 
 import processing.sound.*;
 
@@ -34,7 +35,6 @@ boolean musicOn = false;
 //map data
 ArrayList<Barrier> barrier = new ArrayList<Barrier>();
 char [][] map = new char[mapxSize][mapySize];
-char [][] miniMap = new char[mapxSize][mapySize];
 String mapStr = "";
 String miniMapStr = "";
 
@@ -86,10 +86,6 @@ void setup()
   c = new Cabin();
 
   m.setupMap();
-<<<<<<< HEAD
-  
-=======
->>>>>>> 9a8975a75b48037dce8d76a295b9642033b70c7c
 }
 
 void draw()
@@ -140,12 +136,6 @@ void draw()
   println("player xPos: " + p.xPos);
   println("player yPos: " + p.yPos);
   
-<<<<<<< HEAD
-  circle( w.dangerX, w.dangerY, 50 );
-  
-  text( dist( z.get(0).xPos, z.get(0).yPos, w.dangerX, w.dangerY ) ,100, 100 );
-=======
->>>>>>> 9a8975a75b48037dce8d76a295b9642033b70c7c
 }
 
 void blockPathing( Player o )
