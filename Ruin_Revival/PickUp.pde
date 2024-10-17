@@ -2,29 +2,22 @@ class PickUp
 {
 
   float xPos, yPos;
-  String name;
   boolean isPickedUp = false;
-
-  //Item item = new Item();
-  int type;
-  Item item = new Item(type);
+  Item item;
   
-  public PickUp(float x, float y, String n, Item i, int t)
+  public PickUp(float x, float y, Item i)
   {
     
     xPos = x;
     yPos = y;
-    name = n;
-    //item = i;
     item = i;
-    type = t;
     
   }
   
   void drawPickUp()
   {
     fill(255);
-    circle(xPos, yPos, 50);
+    circle(xPos, yPos, 100);
   }
   
 }

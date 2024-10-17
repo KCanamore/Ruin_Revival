@@ -7,6 +7,7 @@ class Weapon
   float wepAngle = 0;
   boolean attackOn = false;
   int power = 10;
+  
   public Weapon(String name, String end)
   {
     image = loadImage(name + end);

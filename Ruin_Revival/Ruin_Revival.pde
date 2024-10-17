@@ -9,10 +9,10 @@ import processing.sound.*;
 Player p = new Player();
 ArrayList<Zombies> z = new ArrayList<Zombies>();
 Map m;
-MiniMap M;
 Cabin c;
 Barrier B;
 Weapon w;
+PickUp pUp;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
 
@@ -22,7 +22,6 @@ int mapxSize = 15;
 int mapySize = 15;
 int score;
 int mapScale = 1;
-int miniMapScale = 20;
 
 boolean inCabin = false;
 
@@ -84,12 +83,9 @@ void setup()
     z.add( new Zombies( random(width), random(height) ) );
   }
   m = new Map();
-  M = new MiniMap();
   c = new Cabin();
 
-
   m.setupMap();
-  M.setupMiniMap();
 }
 
 void draw()
@@ -139,6 +135,7 @@ void draw()
   println("width: " + width);
   println("player xPos: " + p.xPos);
   println("player yPos: " + p.yPos);
+  
 }
 
 void blockPathing( Player o )
