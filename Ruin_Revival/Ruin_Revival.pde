@@ -12,6 +12,7 @@ Map m;
 Cabin c;
 Barrier B;
 Weapon w;
+PickUp pUp;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
 
@@ -21,7 +22,6 @@ int mapxSize = 15;
 int mapySize = 15;
 int score;
 int mapScale = 1;
-int miniMapScale = 20;
 
 boolean inCabin = false;
 
@@ -85,9 +85,11 @@ void setup()
   m = new Map();
   c = new Cabin();
 
-
   m.setupMap();
+<<<<<<< HEAD
   
+=======
+>>>>>>> 9a8975a75b48037dce8d76a295b9642033b70c7c
 }
 
 void draw()
@@ -138,9 +140,12 @@ void draw()
   println("player xPos: " + p.xPos);
   println("player yPos: " + p.yPos);
   
+<<<<<<< HEAD
   circle( w.dangerX, w.dangerY, 50 );
   
   text( dist( z.get(0).xPos, z.get(0).yPos, w.dangerX, w.dangerY ) ,100, 100 );
+=======
+>>>>>>> 9a8975a75b48037dce8d76a295b9642033b70c7c
 }
 
 void blockPathing( Player o )
