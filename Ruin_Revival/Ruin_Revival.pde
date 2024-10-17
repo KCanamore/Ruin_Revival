@@ -9,7 +9,6 @@ import processing.sound.*;
 Player p = new Player();
 ArrayList<Zombies> z = new ArrayList<Zombies>();
 Map m;
-MiniMap M;
 Cabin c;
 Barrier B;
 Weapon w;
@@ -79,17 +78,16 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 10; i++)
+  for (int i = 0; i < 1; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
   m = new Map();
-  M = new MiniMap();
   c = new Cabin();
 
 
   m.setupMap();
-  M.setupMiniMap();
+  
 }
 
 void draw()
@@ -107,13 +105,13 @@ void draw()
   if (startGame || loadGame)
   {
     background(0);
-    noCursor();
+    w.findDangerZone(100);
+    //noCursor();
     m.drawMap();
-    //M.drawMiniMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     //B.drawBarrier();
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < z.size(); i++)
     {
       z.get(i).drawZombie();
       z.get(i).moveZombie();
@@ -139,6 +137,10 @@ void draw()
   println("width: " + width);
   println("player xPos: " + p.xPos);
   println("player yPos: " + p.yPos);
+  
+  circle( w.dangerX, w.dangerY, 50 );
+  
+  text( dist( z.get(0).xPos, z.get(0).yPos, w.dangerX, w.dangerY ) ,100, 100 );
 }
 
 void blockPathing( Player o )
@@ -295,6 +297,11 @@ void mouseClicked()
     loadGame();
     musicOn = true;
   }
+  for (int i = 0; i < z.size(); i++)
+    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < 40 )
+    {
+      z.get(i).hurt = true;
+    }
 }
 
 void keyPressed()

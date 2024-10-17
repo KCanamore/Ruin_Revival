@@ -7,6 +7,9 @@ class Weapon
   float wepAngle = 0;
   boolean attackOn = false;
   int power = 10;
+  float dangerX, dangerY;
+  
+  
   public Weapon(String name, String end)
   {
     image = loadImage(name + end);
@@ -39,4 +42,19 @@ class Weapon
     //rotates/shoots to deal damage to enemies
     attackOn = !attackOn;
   }
+  
+  void findDangerZone( float dist )
+  {
+    float direction = atan2(mouseY-p.yPos, mouseX-p.xPos);
+    
+    direction = degrees(direction);
+    float xDist = dist*cos(TWO_PI * direction / 360);
+    float yDist = dist*sin(TWO_PI * direction / 360);
+    
+    fill(255,255,0);
+    
+    dangerX = p.xPos+xDist;
+    dangerY = p.yPos+yDist;
+  }
+
 }

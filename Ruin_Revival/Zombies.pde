@@ -1,11 +1,12 @@
 class Zombies
 {
 
-  float xPos, yPos;
+  public float xPos, yPos;
   float xSpd, ySpd;
   int size;
   int zomCount;
-  boolean left, right, up, down;
+  int health;
+  boolean left, right, up, down, hurt;
 
   public Zombies(float x, float y)
   {
@@ -22,7 +23,12 @@ class Zombies
 
   void drawZombie()
   {
-    fill(#FA0505);
+    //fill(#FA0505);
+    if( hurt )
+      fill(255,0,0);
+    else
+      fill(0);
+      
     circle(xPos, yPos, size);
   }
 
