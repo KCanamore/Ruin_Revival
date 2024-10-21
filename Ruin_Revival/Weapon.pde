@@ -42,7 +42,7 @@ class Weapon
   {
     push();
     fill(0, 50);
-    stroke(50);
+    noStroke();
     translate(xPos, yPos);
     rotate(wepAngle+QUARTER_PI+QUARTER_PI);
     arc(0, 0, 200, 200, PI+QUARTER_PI, TWO_PI);

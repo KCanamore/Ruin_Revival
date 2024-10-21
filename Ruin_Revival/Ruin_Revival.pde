@@ -15,7 +15,7 @@ Barrier B;
 Weapon w;
 PickUp pUp;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair;
 
 boolean startGame, loadGame;
 
@@ -64,6 +64,7 @@ void setup()
   grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
+  crossHair = loadImage("cross-hair.png");
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
@@ -75,6 +76,7 @@ void setup()
   grass.resize((250/mapScale), 0);
   cobble.resize((250/mapScale), 0);
   cabin.resize((250/mapScale), 0);
+  crossHair.resize(50, 0);
   startGame = false;
   loadGame = false;
 
@@ -90,7 +92,7 @@ void setup()
 }
 
 void draw()
-{
+{ 
   //music
   if (musicOn == true)
   {
@@ -124,6 +126,7 @@ void draw()
     p.drawPlayer();
     blockPathing( p );
     blockPathingZom( z );
+    image(crossHair, mouseX, mouseY);
   }
 
   zomTimer++;
