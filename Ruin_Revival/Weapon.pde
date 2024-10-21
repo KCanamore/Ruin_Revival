@@ -9,7 +9,6 @@ class Weapon
   int power = 10;
   float dangerX, dangerY;
   
-  
   public Weapon(String name, String end)
   {
     image = loadImage(name + end);
@@ -26,7 +25,9 @@ class Weapon
     rotate(wepAngle-HALF_PI);
     image(image, 0, 0);
     pop();
-
+    
+    
+    
     if ( attackOn )
     {
       swing += 0.25;
@@ -35,6 +36,17 @@ class Weapon
     } 
     else if ( swing > 0 )
       swing -= 0.1;
+  }
+  
+  public void drawWeaponHitBox(float xPos, float yPos)
+  {
+    push();
+    fill(0, 50);
+    stroke(50);
+    translate(xPos, yPos);
+    rotate(wepAngle+QUARTER_PI+QUARTER_PI);
+    arc(0, 0, 200, 200, PI+QUARTER_PI, TWO_PI);
+    pop();
   }
 
   public void attack()

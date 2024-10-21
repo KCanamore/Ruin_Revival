@@ -25,6 +25,7 @@ int score;
 int mapScale = 1;
 
 boolean inCabin = false;
+boolean outOfCabin = false;
 
 int zomTimer = 0;
 
@@ -103,11 +104,12 @@ void draw()
   if (startGame || loadGame)
   {
     background(0);
-    w.findDangerZone(90);
+    w.findDangerZone(85);
     noCursor();
     m.drawMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
+    w.drawWeaponHitBox(p.xPos, p.yPos);
     //B.drawBarrier();
     for (int i = 0; i < z.size(); i++)
     {
@@ -320,6 +322,7 @@ void keyPressed()
     startGame = true;
     loadGame = true;
     inCabin = false;
+    outOfCabin = true;
   }
 
   if (key == ' ')
