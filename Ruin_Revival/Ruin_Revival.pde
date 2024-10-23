@@ -288,7 +288,7 @@ void loadGame()
   }
 }
 
-void mouseClicked()
+void mousePressed()
 {
   //start game
   if ( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(450/2) && mouseY <= height/2+(450/2) )
@@ -313,6 +313,8 @@ void mouseClicked()
         z.remove(i);
     }
     w.strikeZoms();
+      w.attack();
+
 }
 
 void keyPressed()
@@ -350,10 +352,4 @@ void keyReleased()
     p.up = false;
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
-}
-
-void mousePressed()
-{
-  if (startGame || loadGame)
-    w.attack();
 }
