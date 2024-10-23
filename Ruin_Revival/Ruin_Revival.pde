@@ -1,5 +1,5 @@
 //Xavier, Kanon, Casey
-//zombie apocolyps game
+//zombie apocalypse game
 
 //kelp shake as heals
 //diet dr kelp as heart
@@ -24,6 +24,7 @@ int mapxSize = 15;
 int mapySize = 15;
 int score;
 int mapScale = 1;
+int dangerSize = 90;
 
 boolean inCabin = false;
 boolean outOfCabin = false;
@@ -111,7 +112,7 @@ void draw()
   if (startGame || loadGame)
   {
     background(0);
-    w.findDangerZone(85);
+    w.findDangerZone(50);
     noCursor();
     m.drawMap();
     p.movePlayer();
@@ -130,6 +131,7 @@ void draw()
     }
     p.drawPlayer();
     HUD.drawHUD();
+    circle( w.dangerX, w.dangerY, dangerSize );
     blockPathing( p );
     blockPathingZom( z );
     image(crossHair, mouseX, mouseY);
@@ -304,7 +306,7 @@ void mouseClicked()
     musicOn = true;
   }
   for (int i = 0; i < z.size(); i++)
-    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < 60 )
+    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
     {
       z.get(i).hurt = true;
       z.get(i).health -= 5;
