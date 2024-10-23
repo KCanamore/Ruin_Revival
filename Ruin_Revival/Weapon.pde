@@ -59,6 +59,7 @@ class Weapon
   {
     float direction = atan2(mouseY-p.yPos, mouseX-p.xPos);
     
+    
     direction = degrees(direction);
     float xDist = dist*cos(TWO_PI * direction / 360);
     float yDist = dist*sin(TWO_PI * direction / 360);
@@ -68,5 +69,16 @@ class Weapon
     dangerX = p.xPos+xDist;
     dangerY = p.yPos+yDist;
   }
+  void strikeZoms()
+  {
+    float dangerAngle = atan2(mouseY-p.yPos, mouseX-p.xPos);
+    for( Zombies Z: z )
+    {
+      float zomAngle = atan2( Z.yPos-p.yPos, Z.xPos-p.xPos );
+      if( zomAngle < dangerAngle+QUARTER_PI && zomAngle > dangerAngle-QUARTER_PI && dist(p.xPos,p.yPos,Z.xPos,Z.yPos) < 110)
+        Z.hurt = true;
+    }
+  }
+
 
 }

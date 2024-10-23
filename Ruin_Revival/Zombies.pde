@@ -25,8 +25,10 @@ class Zombies
   void drawZombie()
   {
     //fill(#FA0505);
-    if( hurt )
+    if( hurt && health == 10)
       fill(255,0,0);
+    else if( hurt && health == 5)
+      fill(255,0,255);
     else
       fill(0);
       

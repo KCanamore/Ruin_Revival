@@ -131,7 +131,6 @@ void draw()
     }
     p.drawPlayer();
     HUD.drawHUD();
-    circle( w.dangerX, w.dangerY, dangerSize );
     blockPathing( p );
     blockPathingZom( z );
     image(crossHair, mouseX, mouseY);
@@ -313,6 +312,7 @@ void mouseClicked()
       if(z.get(i).health == 0)
         z.remove(i);
     }
+    w.strikeZoms();
 }
 
 void keyPressed()
