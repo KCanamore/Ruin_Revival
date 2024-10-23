@@ -14,8 +14,9 @@ Cabin c;
 Barrier B;
 Weapon w;
 PickUp pUp;
+HUD HUD = new HUD();;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot;
 
 boolean startGame, loadGame;
 
@@ -65,6 +66,8 @@ void setup()
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
   crossHair = loadImage("cross-hair.png");
+  unHot = loadImage("hotbar-panel.png");
+  hot = loadImage("hotbar-panel-selected.png");
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
@@ -77,6 +80,8 @@ void setup()
   cobble.resize((250/mapScale), 0);
   cabin.resize((250/mapScale), 0);
   crossHair.resize(50, 0);
+  unHot.resize(100, 0);
+  hot.resize(100, 0);
   startGame = false;
   loadGame = false;
 
@@ -124,6 +129,7 @@ void draw()
       c.drawCabinInside();
     }
     p.drawPlayer();
+    HUD.drawHUD();
     blockPathing( p );
     blockPathingZom( z );
     image(crossHair, mouseX, mouseY);
