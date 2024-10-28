@@ -1,4 +1,4 @@
-//Xavier, Kanon, Casey
+//Xavier, Kanon, Kasey
 //zombie apocalypse game
 
 //kelp shake as heals
