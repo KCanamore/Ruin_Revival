@@ -14,7 +14,8 @@ Cabin c;
 Barrier B;
 Weapon w;
 PickUp pUp;
-HUD HUD = new HUD();;
+HUD HUD = new HUD();
+;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot;
 
@@ -37,6 +38,7 @@ boolean musicOn = false;
 
 //map data
 ArrayList<Barrier> barrier = new ArrayList<Barrier>();
+ArrayList<Barrier> cabinBarrier = new ArrayList<Barrier>();
 char [][] map = new char[mapxSize][mapySize];
 String mapStr = "";
 String miniMapStr = "";
@@ -98,7 +100,7 @@ void setup()
 }
 
 void draw()
-{ 
+{
   //music
   if (musicOn == true)
   {
@@ -124,7 +126,7 @@ void draw()
       z.get(i).drawZombie();
       z.get(i).moveZombie();
     }
-    if ( inCabin == true )
+    if ( inCabin )
     {
       background(0);
       c.drawCabinInside();
@@ -138,16 +140,15 @@ void draw()
 
   zomTimer++;
 
-  //push();
-  //textSize(50);
-  //fill(255);
-  //text("barriers: "+barrier.size(),200,200);
-  //pop();
-  println("height: "+ height);
-  println("width: " + width);
-  println("player xPos: " + p.xPos);
-  println("player yPos: " + p.yPos);
-  
+  push();
+  textSize(50);
+  fill(255);
+  text("cabin barriers: "+cabinBarrier.size(), 200, 200);
+  pop();
+  //println("height: "+ height);
+  //println("width: " + width);
+  //println("player xPos: " + p.xPos);
+  //println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
@@ -305,16 +306,15 @@ void mousePressed()
     musicOn = true;
   }
   for (int i = 0; i < z.size(); i++)
-  if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
-  {
-    z.get(i).hurt = true;
-    z.get(i).health -= 5;
-    if(z.get(i).health == 0)
-      z.remove(i);
-  }
+    if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
+    {
+      z.get(i).hurt = true;
+      z.get(i).health -= 5;
+      if (z.get(i).health == 0)
+        z.remove(i);
+    }
   w.strikeZoms();
   w.attack();
-
 }
 
 void keyPressed()
@@ -330,7 +330,7 @@ void keyPressed()
 
   if (key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
     inCabin = true;
-  else if ( inCabin == true && p.yPos > 965 && key == 'e')
+  else if ( inCabin == true && p.yPos > 965 && key == 'e' && key == 'E')
   {
     startGame = true;
     loadGame = true;

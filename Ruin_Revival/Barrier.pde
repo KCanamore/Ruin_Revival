@@ -3,7 +3,7 @@ class Barrier
   float barrierXpos, barrierYpos;
   float barrierXsize, barrierYsize;
   int type;
-  
+
   public Barrier( float x, float y, int t )
   {
     barrierXpos = x;
@@ -13,7 +13,7 @@ class Barrier
     type = t;
     //println( "A " + type + " barrier was created!");
   }
-  
+
   void drawBarrier()
   {
     fill(255);
