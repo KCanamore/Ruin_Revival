@@ -72,23 +72,19 @@ class Map
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree1, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } 
-        else if (map[j][i]=='!')
+        } else if (map[j][i]=='!')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree2, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        }
-        else if (map[j][i]=='%')
+        } else if (map[j][i]=='%')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree3, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        }
-        else if (map[j][i]=='^')
+        } else if (map[j][i]=='^')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree4, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } 
-        else if (map[j][i]==' ')
+        } else if (map[j][i]==' ')
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
         else if (map[j][i]=='$')
           image(water, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
@@ -98,8 +94,7 @@ class Map
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } 
-        else if (map[j][i]=='<')
+        } else if (map[j][i]=='<')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1));

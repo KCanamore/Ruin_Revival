@@ -37,6 +37,7 @@ boolean musicOn = false;
 
 //map data
 ArrayList<Barrier> barrier = new ArrayList<Barrier>();
+ArrayList<Barrier> cabinBarrier = new ArrayList<Barrier>();
 char [][] map = new char[mapxSize][mapySize];
 String mapStr = "";
 String miniMapStr = "";
@@ -143,10 +144,10 @@ void draw()
   //fill(255);
   //text("barriers: "+barrier.size(),200,200);
   //pop();
-  println("height: "+ height);
-  println("width: " + width);
-  println("player xPos: " + p.xPos);
-  println("player yPos: " + p.yPos);
+  //println("height: "+ height);
+  //println("width: " + width);
+  //println("player xPos: " + p.xPos);
+  //println("player yPos: " + p.yPos);
   
 }
 
