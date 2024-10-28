@@ -25,12 +25,12 @@ class Map
     mapStr += "^             !";
     mapStr += "^     @  $$$  !"; // * = cobble
     mapStr += "^    ***  $$  !";
-    mapStr += "^      *<*    !"; // # = trees
+    mapStr += "^      *<*     "; // # = trees
     mapStr += "^        ***  !";
     mapStr += "^   $$$   **  !"; // $ = water
     mapStr += "^  $$$$$   ** !";
     mapStr += "^  $$$$$   ** !"; // space = grass
-    mapStr += "^  $$$$$  **  !";
+    mapStr += "^  $$$$$  **   !";
     mapStr += "^   $$$   **  !"; // @ = cabin
     mapStr += "^       ***   !";
     mapStr += "^  *******    !"; // < = test PickUp // REMOVE!!!

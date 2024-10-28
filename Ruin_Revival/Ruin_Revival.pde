@@ -127,10 +127,7 @@ void draw()
       z.get(i).moveZombie();
     }
     if ( inCabin )
-    {
-      background(0);
       c.drawCabinInside();
-    }
     p.drawPlayer();
     HUD.drawHUD();
     blockPathing( p );
@@ -145,10 +142,10 @@ void draw()
   fill(255);
   text("cabin barriers: "+cabinBarrier.size(), 200, 200);
   pop();
-  //println("height: "+ height);
-  //println("width: " + width);
-  //println("player xPos: " + p.xPos);
-  //println("player yPos: " + p.yPos);
+  println("height: "+ height);
+  println("width: " + width);
+  println("player xPos: " + p.xPos);
+  println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
