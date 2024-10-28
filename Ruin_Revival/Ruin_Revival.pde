@@ -87,7 +87,7 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 200; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -305,15 +305,15 @@ void mousePressed()
     musicOn = true;
   }
   for (int i = 0; i < z.size(); i++)
-    if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
-    {
-      z.get(i).hurt = true;
-      z.get(i).health -= 5;
-      if(z.get(i).health == 0)
-        z.remove(i);
-    }
-    w.strikeZoms();
-      w.attack();
+  if( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
+  {
+    z.get(i).hurt = true;
+    z.get(i).health -= 5;
+    if(z.get(i).health == 0)
+      z.remove(i);
+  }
+  w.strikeZoms();
+  w.attack();
 
 }
 
