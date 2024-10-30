@@ -1,4 +1,4 @@
-//Xavier, Kanon, Casey
+//Xavier, Kanon, Kasey
 //zombie apocalypse game
 
 //kelp shake as heals
@@ -15,7 +15,6 @@ Barrier B;
 Weapon w;
 PickUp pUp;
 HUD HUD = new HUD();
-;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot;
 
@@ -117,6 +116,7 @@ void draw()
     w.findDangerZone(50);
     noCursor();
     m.drawMap();
+    c.drawCabinInside();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);
@@ -125,11 +125,6 @@ void draw()
     {
       z.get(i).drawZombie();
       z.get(i).moveZombie();
-    }
-    if ( inCabin )
-    {
-      background(0);
-      c.drawCabinInside();
     }
     p.drawPlayer();
     HUD.drawHUD();
@@ -149,6 +144,13 @@ void draw()
   text(("player xPos: " + p.xPos), 200, 400);
   text(("player yPos: " + p.yPos), 200, 500);
   pop();
+<<<<<<< HEAD
+=======
+  println("height: "+ height);
+  println("width: " + width);
+  println("player xPos: " + p.xPos);
+  println("player yPos: " + p.yPos);
+>>>>>>> 98ba5e22a5c0735c2d0a17c5b1852a0d437bea06
 }
 
 void blockPathing( Player o )
@@ -332,8 +334,6 @@ void keyPressed()
     inCabin = true;
   else if ( inCabin == true && p.yPos > 965 && key == 'e' && key == 'E')
   {
-    startGame = true;
-    loadGame = true;
     inCabin = false;
     outOfCabin = true;
   }
