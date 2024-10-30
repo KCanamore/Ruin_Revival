@@ -89,7 +89,7 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 200; i++)
+  for (int i = 0; i < 1; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -143,12 +143,12 @@ void draw()
   push();
   textSize(50);
   fill(255);
-  text("cabin barriers: "+cabinBarrier.size(), 200, 200);
+  //text("cabin barriers: "+cabinBarrier.size(), 200, 200);
+   text(("pUp x: "+ pUp.xPos), 200, 200);
+  text(("pUp y: " + pUp.yPos), 200, 300);
+  text(("player xPos: " + p.xPos), 200, 400);
+  text(("player yPos: " + p.yPos), 200, 500);
   pop();
-  //println("height: "+ height);
-  //println("width: " + width);
-  //println("player xPos: " + p.xPos);
-  //println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
@@ -337,6 +337,9 @@ void keyPressed()
     inCabin = false;
     outOfCabin = true;
   }
+  
+  if( key == 'p' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
+    pUp.isPickedUp = true;
 
   if (key == ' ')
     saveGame();

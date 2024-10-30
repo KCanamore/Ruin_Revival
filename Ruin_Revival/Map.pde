@@ -54,7 +54,9 @@ class Map
           barrier.add( new Barrier(j*(250/mapScale), i*(250/mapScale), 1) );
         if ( map[j][i] == '$' )
           barrier.add( new Barrier(j*(250/mapScale), i*(250/mapScale), 1) );
-      }
+        if( map[j][i] == '<' )
+          pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
+    }
     }
   }
 
@@ -96,7 +98,6 @@ class Map
         } else if (map[j][i]=='<')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-          pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1));
           pUp.drawPickUp();
         }
       }

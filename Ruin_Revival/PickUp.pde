@@ -15,7 +15,10 @@ class PickUp
 
   void drawPickUp()
   {
-    fill(255);
-    circle(xPos, yPos, 100);
+    if(!isPickedUp)
+    {
+      fill(255);
+      circle(xPos, yPos, 100);
+    }
   }
 }
