@@ -23,14 +23,14 @@ class Map
   {
     mapStr += "###############"; //15x15 map
     mapStr += "^             !";
-    mapStr += "^     @  $$$  !"; // * = cobble
+    mapStr += "      @  $$$  !"; // * = cobble
     mapStr += "^    ***  $$  !";
-    mapStr += "^      *<*     "; // # = trees
+    mapStr += "^      *<*    !"; // #/%/!/^ = trees
     mapStr += "^        ***  !";
     mapStr += "^   $$$   **  !"; // $ = water
     mapStr += "^  $$$$$   ** !";
     mapStr += "^  $$$$$   ** !"; // space = grass
-    mapStr += "^  $$$$$  **   !";
+    mapStr += "^  $$$$$  **  !";
     mapStr += "^   $$$   **  !"; // @ = cabin
     mapStr += "^       ***   !";
     mapStr += "^  *******    !"; // < = test PickUp // REMOVE!!!

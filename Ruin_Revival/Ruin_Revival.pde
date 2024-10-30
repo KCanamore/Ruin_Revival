@@ -15,7 +15,6 @@ Barrier B;
 Weapon w;
 PickUp pUp;
 HUD HUD = new HUD();
-;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot;
 
@@ -117,6 +116,7 @@ void draw()
     w.findDangerZone(50);
     noCursor();
     m.drawMap();
+    c.drawCabinInside();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);
@@ -126,8 +126,6 @@ void draw()
       z.get(i).drawZombie();
       z.get(i).moveZombie();
     }
-    if ( inCabin )
-      c.drawCabinInside();
     p.drawPlayer();
     HUD.drawHUD();
     blockPathing( p );
@@ -329,8 +327,6 @@ void keyPressed()
     inCabin = true;
   else if ( inCabin == true && p.yPos > 965 && key == 'e' && key == 'E')
   {
-    startGame = true;
-    loadGame = true;
     inCabin = false;
     outOfCabin = true;
   }
