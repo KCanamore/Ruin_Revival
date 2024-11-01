@@ -55,7 +55,7 @@ class Map
         if ( map[j][i] == '$' )
           barrier.add( new Barrier(j*(250/mapScale), i*(250/mapScale), 1) );
         if( map[j][i] == '<' )
-          pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
+          pUp = new PickUp(j*(250/mapScale), i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
     }
     }
   }
