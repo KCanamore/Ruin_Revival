@@ -144,13 +144,10 @@ void draw()
   text(("player xPos: " + p.xPos), 200, 400);
   text(("player yPos: " + p.yPos), 200, 500);
   pop();
-<<<<<<< HEAD
-=======
   println("height: "+ height);
   println("width: " + width);
   println("player xPos: " + p.xPos);
   println("player yPos: " + p.yPos);
->>>>>>> 98ba5e22a5c0735c2d0a17c5b1852a0d437bea06
 }
 
 void blockPathing( Player o )
