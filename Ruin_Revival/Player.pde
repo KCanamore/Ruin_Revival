@@ -46,6 +46,7 @@ class Player
       xPos = width-(250/mapScale);
       m.mapXpos -= xSpd;
       c.cabinXpos -= xSpd;
+      pUp.xPos -= xSpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).xPos -= xSpd;
       for (Barrier b : barrier )
@@ -57,6 +58,7 @@ class Player
       xPos = (250/mapScale);
       m.mapXpos -= xSpd;
       c.cabinXpos -= xSpd;
+      pUp.xPos -= xSpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).xPos -= xSpd;
       for (Barrier b : barrier )
@@ -67,7 +69,8 @@ class Player
     {
       yPos = height-(250/mapScale);
       m.mapYpos -= ySpd;
-      c.cabinYpos -= xSpd;
+      c.cabinYpos -= ySpd;
+      pUp.yPos -= ySpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).yPos -= ySpd;
       for (Barrier b : barrier )
@@ -78,7 +81,8 @@ class Player
     {
       yPos = (250/mapScale);
       m.mapYpos -= ySpd;
-      c.cabinYpos -= xSpd;
+      c.cabinYpos -= ySpd;
+      pUp.yPos -= ySpd;
       for (int i = 0; i < z.size(); i++)
         z.get(i).yPos -= ySpd;
       for (Barrier b : barrier )
