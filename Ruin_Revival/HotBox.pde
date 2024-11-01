@@ -3,7 +3,8 @@ class HotBox
 
   float xPos, yPos;
   boolean isSelected = false;
-
+  
+  
   public HotBox(float x, float y, boolean s)
   {
     xPos = x;
@@ -20,5 +21,6 @@ class HotBox
     {
       image(hot, xPos+100, yPos);
     }
+    
   }
 }
