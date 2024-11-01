@@ -49,8 +49,8 @@ class Cabin
     {
       //p.xPos = width/2;
       //p.yPos = height/2;
-      m.mapXpos -= cabinXpos-p.xPos;
-      m.mapYpos -= cabinYpos-p.yPos;
+      m.mapXpos = cabinXpos-p.xPos;
+      m.mapYpos = cabinYpos-p.yPos;
     }
   }
 }
