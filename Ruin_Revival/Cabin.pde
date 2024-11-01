@@ -47,10 +47,10 @@ class Cabin
     image(cabinInside, cabinXpos, cabinYpos);
     if (inCabin)
     {
-      p.xPos = width/2;
-      p.yPos = height/2;
-      m.mapXpos += cabinXpos-p.xPos;
-      m.mapYpos += cabinYpos-p.yPos;
+      //p.xPos = width/2;
+      //p.yPos = height/2;
+      m.mapXpos -= cabinXpos-p.xPos;
+      m.mapYpos -= cabinYpos-p.yPos;
     }
   }
 }

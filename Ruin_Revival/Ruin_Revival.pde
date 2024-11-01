@@ -139,7 +139,7 @@ void draw()
   textSize(50);
   fill(255);
   //text("cabin barriers: "+cabinBarrier.size(), 200, 200);
-   text(("pUp x: "+ pUp.xPos), 200, 200);
+  text(("pUp x: "+ pUp.xPos), 200, 200);
   text(("pUp y: " + pUp.yPos), 200, 300);
   text(("player xPos: " + p.xPos), 200, 400);
   text(("player yPos: " + p.yPos), 200, 500);
