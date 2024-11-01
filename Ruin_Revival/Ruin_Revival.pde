@@ -32,7 +32,7 @@ boolean outOfCabin = false;
 int zomTimer = 0;
 
 //sound stuff
-//SoundFile backMusic;
+SoundFile backMusic;
 boolean musicOn = false;
 
 //map data
@@ -45,17 +45,17 @@ String miniMapStr = "";
 
 void setup()
 {
-
+  
   w = new Weapon("waifu_katana", ".png");
-
+  
   fullScreen();
   noSmooth();
-
-  //backMusic = new SoundFile(this, "music.mp3");
-
+  
+  backMusic = new SoundFile(this, "music.mp3");
+  
   rectMode(CENTER);
   imageMode(CENTER);
-
+  
   title = loadImage("title.png");
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
@@ -103,7 +103,7 @@ void draw()
   //music
   if (musicOn == true)
   {
-    //backMusic.play();
+    backMusic.play();
     musicOn = false;
   }
 
@@ -291,14 +291,14 @@ void loadGame()
 void mousePressed()
 {
   //start game
-  if ( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(450/2) && mouseY <= height/2+(450/2) )
+  if ( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/2-(450/2) && mouseY <= height/2+(450/2) && !startGame || !loadGame)
   {
     startGame = true;
     musicOn = true;
   }
 
   //load game
-  if ( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/1.25-(225/2) && mouseY <= height/1.25+(225/2) )
+  if ( mouseX >= width/2-225 && mouseX <= width/2+225 && mouseY >= height/1.25-(225/2) && mouseY <= height/1.25+(225/2) && !startGame || !loadGame)
   {
     loadGame = true;
     loadGame();
@@ -327,16 +327,20 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
-  if (key == 'e' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
+  if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
     inCabin = true;
-  else if ( inCabin == true && p.yPos > 965 && key == 'e' && key == 'E')
+  else if ( inCabin == true && p.yPos > 965 && key == 'e' || key == 'E')
   {
     inCabin = false;
     outOfCabin = true;
   }
   
+<<<<<<< HEAD
   if( key == 'p' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
   {
+=======
+  if( key == 'f'  || key == 'F' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
+>>>>>>> 3c980e4fd42c13b2a68716d620ab15eecbd8a7f0
     pUp.isPickedUp = true;
   }
 
