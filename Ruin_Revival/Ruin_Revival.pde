@@ -328,7 +328,10 @@ void keyPressed()
     p.down = true;
 
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
+  {
     inCabin = true;
+    outOfCabin = false;
+  }
   else if ( inCabin == true && p.yPos > 965 && key == 'e' || key == 'E')
   {
     inCabin = false;
