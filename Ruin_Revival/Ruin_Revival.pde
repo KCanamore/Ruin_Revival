@@ -32,7 +32,7 @@ boolean outOfCabin = false;
 int zomTimer = 0;
 
 //sound stuff
-SoundFile backMusic;
+//SoundFile backMusic;
 boolean musicOn = false;
 
 //map data
@@ -51,7 +51,7 @@ void setup()
   fullScreen();
   noSmooth();
   
-  backMusic = new SoundFile(this, "music.mp3");
+  //backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -101,11 +101,11 @@ void setup()
 void draw()
 {
   //music
-  if (musicOn == true)
-  {
-    backMusic.play();
-    musicOn = false;
-  }
+  //if (musicOn == true)
+  //{
+  //  backMusic.play();
+  //  musicOn = false;
+  //}
 
   background(0);
   drawButtons();
@@ -335,12 +335,10 @@ void keyPressed()
     outOfCabin = true;
   }
   
-<<<<<<< HEAD
+
   if( key == 'p' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
   {
-=======
   if( key == 'f'  || key == 'F' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
->>>>>>> 3c980e4fd42c13b2a68716d620ab15eecbd8a7f0
     pUp.isPickedUp = true;
   }
 
