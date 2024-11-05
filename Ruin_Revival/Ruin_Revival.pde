@@ -1,3 +1,4 @@
+
 //Xavier, Kanon, Kasey
 //zombie apocalypse game
 
@@ -51,7 +52,7 @@ void setup()
   fullScreen();
   noSmooth();
   
-  backMusic = new SoundFile(this, "music.mp3");
+  //backMusic = new SoundFile(this, "music.mp3");
   
   rectMode(CENTER);
   imageMode(CENTER);
@@ -103,7 +104,7 @@ void draw()
   //music
   if (musicOn == true)
   {
-    backMusic.play();
+    //backMusic.play();
     musicOn = false;
   }
 
@@ -335,12 +336,9 @@ void keyPressed()
     outOfCabin = true;
   }
   
-<<<<<<< HEAD
-  if( key == 'p' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
-  {
-=======
+ 
   if( key == 'f'  || key == 'F' && dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 100)
->>>>>>> 3c980e4fd42c13b2a68716d620ab15eecbd8a7f0
+  {
     pUp.isPickedUp = true;
   }
 
