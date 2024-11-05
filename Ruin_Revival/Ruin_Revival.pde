@@ -336,7 +336,7 @@ void keyPressed()
   }
    
 
-  if( dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 50 && ( key == 'f'  || key == 'F' ) )
+  if( dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 65 && ( key == 'f'  || key == 'F' ) )
   {
     pUp.isPickedUp = true;
   }
