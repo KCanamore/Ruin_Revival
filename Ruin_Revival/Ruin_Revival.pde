@@ -101,11 +101,6 @@ void setup()
 void draw()
 {
   //music
-  if (musicOn == true)
-  {
-    //backMusic.play();
-    musicOn = false;
-  }
   //if (musicOn == true)
   //{
   //  backMusic.play();
