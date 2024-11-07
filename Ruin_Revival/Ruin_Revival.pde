@@ -119,8 +119,10 @@ void draw()
     background(0);
     w.findDangerZone(50);
     noCursor();
-    m.drawMap();
+    if(inCabin)
     c.drawCabinInside();
+    else
+    m.drawMap();
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);

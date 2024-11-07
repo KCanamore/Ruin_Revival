@@ -9,7 +9,7 @@ class Cabin
     cabinInside = loadImage("cabin-inside.png");
     cabinInside.resize(height, 0);
     
-    cabinXpos = -width/2;
+    cabinXpos = width/2;
     cabinYpos = height/2;
     
     doorX = width/2;
