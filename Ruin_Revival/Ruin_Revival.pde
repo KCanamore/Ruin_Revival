@@ -106,7 +106,7 @@ void draw()
   //  backMusic.play();
   //  musicOn = false;
   //}
-
+  
   background(0);
   drawButtons();
 
@@ -327,17 +327,6 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
-  if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
-  {
-    inCabin = true;
-    outOfCabin = false;
-  }
-  else if ( inCabin == true && p.yPos > 965 && key == 'e' || key == 'E')
-  {
-    inCabin = false;
-    outOfCabin = true;
-  }
-   
 
   if( dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 65 && ( key == 'f'  || key == 'F' ) )
   {
@@ -358,4 +347,6 @@ void keyReleased()
     p.up = false;
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
+  if (key == 'e' || key == 'E') 
+    c.checkDoorInteraction();
 }

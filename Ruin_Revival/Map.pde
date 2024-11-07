@@ -91,14 +91,16 @@ class Map
           image(water, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
         else if (map[j][i]=='*')
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+        else if (map[j][i]=='<')
+        {
+          image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+          pUp.drawPickUp();
+        }
         else if (map[j][i]=='@')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]=='<')
-        {
-          image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-          pUp.drawPickUp();
+          c.drawCabinDoor((m.mapXpos+j*(250/mapScale))-35, (m.mapYpos+i*(250/mapScale))+115);
         }
       }
   }

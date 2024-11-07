@@ -2,7 +2,7 @@ class Cabin
 {
   PImage cabinInside;
   
-  float cabinXpos, cabinYpos;
+  float cabinXpos, cabinYpos, doorX, doorY, doorWidth, doorHeight;
 
   public Cabin()
   {
@@ -11,6 +11,12 @@ class Cabin
     
     cabinXpos = -width/2;
     cabinYpos = height/2;
+    
+    doorX = width/2;
+    doorY = height/2;
+    
+    doorWidth = 30;
+    doorHeight = 50;
     
     ////left
     //cabinBarrier.add( new Barrier(cabinXpos-420, cabinYpos-(250/mapScale), 1) );
@@ -45,15 +51,38 @@ class Cabin
   void drawCabinInside()
   {
     image(cabinInside, cabinXpos, cabinYpos);
-    if (inCabin)
+  }
+  void drawCabinDoor(float x, float y)
+  {
+    doorX = x;
+    doorY = y;
+    rect(doorX, doorY, doorWidth, doorHeight);
+  }
+  void checkDoorInteraction()
+  {
+    if (!inCabin) 
     {
-      m.mapXpos = 2500;
-      cabinXpos = width/2;
-    }
-    if (outOfCabin)
+      // Check if player is near the door to enter the cabin
+      if (dist(p.xPos, p.yPos, doorX + doorWidth / 2, doorY + doorHeight / 2) < 100 ) 
+      {
+        inCabin = true;
+        p.xPos = width / 2;
+        p.yPos = height - 60;  // Place player near the exit door inside
+      }
+    } 
+    else
     {
-      m.mapXpos = 0;
-      cabinXpos = -width/2;
-    }
+      // Inside the cabin, check if player is near the exit door
+      float exitDoorX = width / 2 - 10;
+      float exitDoorY = height - 40;
+  
+      if (dist(p.xPos, p.yPos, exitDoorX + doorWidth / 2, exitDoorY + doorHeight / 2) < 100 )
+      {
+        inCabin = false;
+        p.xPos = doorX + doorWidth / 2;
+        p.yPos = doorY + doorHeight;  // Place player just outside the cabin door
+      }
+    }   
+
   }
 }
