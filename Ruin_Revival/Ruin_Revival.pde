@@ -13,10 +13,10 @@ Map m;
 Cabin c;
 Barrier B;
 Weapon w;
-PickUp pUp;
+PickUp pUp [] = new PickUp [2];
 HUD HUD = new HUD();
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS;
 
 boolean startGame, loadGame;
 
@@ -70,6 +70,8 @@ void setup()
   crossHair = loadImage("cross-hair.png");
   unHot = loadImage("hotbar-panel.png");
   hot = loadImage("hotbar-panel-selected.png");
+  kelpJ = loadImage("Kelp_Juice.png");
+  kelpS = loadImage("Kelp_Shake.png");
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
@@ -84,6 +86,8 @@ void setup()
   crossHair.resize(50, 0);
   unHot.resize(100, 0);
   hot.resize(100, 0);
+  kelpJ.resize(90, 0);
+  kelpS.resize(90, 0);
   startGame = false;
   loadGame = false;
 
@@ -135,15 +139,15 @@ void draw()
 
   zomTimer++;
 
-  push();
-  textSize(50);
-  fill(255);
-  //text("cabin barriers: "+cabinBarrier.size(), 200, 200);
-  text(("pUp x: "+ pUp.xPos), 200, 200);
-  text(("pUp y: " + pUp.yPos), 200, 300);
-  text(("player xPos: " + p.xPos), 200, 400);
-  text(("player yPos: " + p.yPos), 200, 500);
-  pop();
+  //push();
+  //textSize(50);
+  //fill(255);
+  ////text("cabin barriers: "+cabinBarrier.size(), 200, 200);
+  //text(("pUp x: "+ pUp.xPos), 200, 200);
+  //text(("pUp y: " + pUp.yPos), 200, 300);
+  //text(("player xPos: " + p.xPos), 200, 400);
+  //text(("player yPos: " + p.yPos), 200, 500);
+  //pop();
   println("height: "+ height);
   println("width: " + width);
   println("player xPos: " + p.xPos);
@@ -327,12 +331,30 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
+<<<<<<< HEAD
 
   if( dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 65 && ( key == 'f'  || key == 'F' ) )
+=======
+  if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
   {
-    pUp.isPickedUp = true;
+    inCabin = true;
+    outOfCabin = false;
   }
-
+  else if ( inCabin == true && p.yPos > 965 && key == 'e' || key == 'E')
+  {
+    inCabin = false;
+    outOfCabin = true;
+  }
+   
+  for(int i = 0; i < pUp.length; i++)
+>>>>>>> 6b816840ce838bed9f850abead01efe0b0999b40
+  {
+    if( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && ( key == 'f'  || key == 'F' ) )
+    {
+      pUp[i].isPickedUp = true;
+      HUD.h[pUp[i].item].amount++;
+    }
+  }
   if (key == ' ')
     saveGame();
 }

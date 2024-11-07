@@ -7,7 +7,7 @@ class HUD
   {
     for (int i = 0; i < h.length; i++)
     {
-      h[i] = new HotBox(100*i, 1000, false);
+      h[i] = new HotBox(100*i, 1000, false, i+1);
     }
   }
 

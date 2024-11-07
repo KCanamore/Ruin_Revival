@@ -3,9 +3,10 @@ class PickUp
 
   float xPos, yPos;
   boolean isPickedUp = false;
-  Item item;
+  //Item item;
+  int item;
 
-  public PickUp(float x, float y, Item i)
+  public PickUp(float x, float y, int i)
   {
 
     xPos = x;
