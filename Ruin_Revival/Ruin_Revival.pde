@@ -331,10 +331,9 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
-<<<<<<< HEAD
 
-  if( dist(p.xPos, p.yPos, pUp.xPos, pUp.yPos) < 65 && ( key == 'f'  || key == 'F' ) )
-=======
+
+  
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
   {
     inCabin = true;
@@ -347,7 +346,6 @@ void keyPressed()
   }
    
   for(int i = 0; i < pUp.length; i++)
->>>>>>> 6b816840ce838bed9f850abead01efe0b0999b40
   {
     if( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && ( key == 'f'  || key == 'F' ) )
     {

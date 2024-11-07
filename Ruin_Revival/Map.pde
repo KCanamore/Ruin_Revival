@@ -94,14 +94,11 @@ class Map
           image(water, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
         else if (map[j][i]=='*')
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-<<<<<<< HEAD
-=======
         else if (map[j][i]=='@')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
         } 
->>>>>>> 6b816840ce838bed9f850abead01efe0b0999b40
         else if (map[j][i]=='<')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
