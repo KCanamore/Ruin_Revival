@@ -45,7 +45,6 @@ class Player
     {
       xPos = width-(250/mapScale);
       m.mapXpos -= xSpd;
-      c.cabinXpos -= xSpd;
       for (int i = 0; i < pUp.length; i++)
         pUp[i].xPos -= xSpd;
       for (int i = 0; i < z.size(); i++)
@@ -58,7 +57,6 @@ class Player
     {
       xPos = (250/mapScale);
       m.mapXpos -= xSpd;
-      c.cabinXpos -= xSpd;
       for (int i = 0; i < pUp.length; i++)
         pUp[i].xPos -= xSpd;
       for (int i = 0; i < z.size(); i++)
@@ -71,7 +69,6 @@ class Player
     {
       yPos = height-(250/mapScale);
       m.mapYpos -= ySpd;
-      c.cabinYpos -= ySpd;
       for (int i = 0; i < pUp.length; i++)
         pUp[i].yPos -= ySpd;
       for (int i = 0; i < z.size(); i++)
@@ -84,7 +81,6 @@ class Player
     {
       yPos = (250/mapScale);
       m.mapYpos -= ySpd;
-      c.cabinYpos -= ySpd;
       for (int i = 0; i < pUp.length; i++)
         pUp[i].yPos -= ySpd;
       for (int i = 0; i < z.size(); i++)
