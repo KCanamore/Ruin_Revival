@@ -14,9 +14,9 @@ Cabin c;
 Barrier B;
 Weapon w;
 PickUp pUp [] = new PickUp [2];
-HUD HUD = new HUD();
+HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings;
 
 boolean startGame, loadGame;
 
@@ -28,6 +28,7 @@ int dangerSize = 90;
 
 boolean inCabin = false;
 boolean outOfCabin = false;
+boolean pause = false;
 
 int zomTimer = 0;
 
@@ -72,6 +73,7 @@ void setup()
   hot = loadImage("hotbar-panel-selected.png");
   kelpJ = loadImage("Kelp_Juice.png");
   kelpS = loadImage("Kelp_Shake.png");
+  settings = loadImage("gear.png");
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
@@ -88,6 +90,7 @@ void setup()
   hot.resize(100, 0);
   kelpJ.resize(90, 0);
   kelpS.resize(90, 0);
+  settings.resize(100, 0);
   startGame = false;
   loadGame = false;
 
@@ -98,6 +101,7 @@ void setup()
   }
   m = new Map();
   c = new Cabin();
+  HUD = new HUD();
 
   m.setupMap();
 }
@@ -119,10 +123,17 @@ void draw()
     background(0);
     w.findDangerZone(50);
     noCursor();
+    
+    if(pause)
+    noLoop();
+    else
+    loop();
+    
     if(inCabin)
     c.drawCabinInside();
     else
     m.drawMap();
+    
     p.movePlayer();
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);
@@ -310,6 +321,20 @@ void mousePressed()
     loadGame();
     musicOn = true;
   }
+  
+  //open the settings menu
+  if ( dist(mouseX, mouseY, HUD.settingsXpos, HUD.settingsYpos ) < 100)
+    pause = true;
+  //save the game through this button
+  if (dist(mouseX, mouseY, HUD.saveXpos, HUD.saveYpos ) < 100)
+    saveGame();
+  //resume the game with this button
+  if (dist(mouseX, mouseY, HUD.unPauseXpos, HUD.unPauseYpos ) < 100)
+    pause = false;
+  //this button is for exiting the game
+  if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
+    exit();
+
   for (int i = 0; i < z.size(); i++)
     if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
     {
@@ -332,10 +357,7 @@ void keyPressed()
     p.up = true;
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
-
-
-
-  
+    
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
   {
     inCabin = true;
@@ -355,8 +377,6 @@ void keyPressed()
       HUD.h[pUp[i].item].amount++;
     }
   }
-  if (key == ' ')
-    saveGame();
 }
 
 void keyReleased()
