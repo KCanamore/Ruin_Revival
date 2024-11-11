@@ -66,8 +66,8 @@ class Cabin
       if (dist(p.xPos, p.yPos, doorX + doorWidth / 2, doorY + doorHeight / 2) < 100 ) 
       {
         inCabin = true;
-        p.xPos = width / 2;
-        p.yPos = height - 60;  // Place player near the exit door inside
+        p.xPos = doorX;
+        p.yPos = doorY;  // Place player near the exit door inside
       }
     } 
     else
