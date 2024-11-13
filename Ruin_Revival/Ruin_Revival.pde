@@ -16,7 +16,7 @@ Weapon w;
 PickUp pUp [] = new PickUp [2];
 HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit;
 
 boolean startGame, loadGame;
 
@@ -74,6 +74,9 @@ void setup()
   kelpJ = loadImage("Kelp_Juice.png");
   kelpS = loadImage("Kelp_Shake.png");
   settings = loadImage("gear.png");
+  resume = loadImage("resume_button.png");
+  save = loadImage("save_button.png");
+  exit = loadImage("exit_button.png");
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);
@@ -91,6 +94,9 @@ void setup()
   kelpJ.resize(90, 0);
   kelpS.resize(90, 0);
   settings.resize(100, 0);
+  resume.resize(350, 0);
+  save.resize(350, 0);
+  exit.resize(350, 0);
   startGame = false;
   loadGame = false;
 
@@ -124,29 +130,31 @@ void draw()
     w.findDangerZone(50);
     noCursor();
     
-    if(pause)
-    noLoop();
-    else
-    loop();
-    
     if(inCabin)
     c.drawCabinInside();
     else
     m.drawMap();
     
+    if(!pause)
     p.movePlayer();
+    
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);
     //B.drawBarrier();
     for (int i = 0; i < z.size(); i++)
     {
       z.get(i).drawZombie();
-      z.get(i).moveZombie();
+      if(!pause)
+        z.get(i).moveZombie();
     }
     p.drawPlayer();
     HUD.drawHUD();
     blockPathing( p );
     blockPathingZom( z );
+    
+    if(pause)
+      HUD.drawSettingsOptions();
+    
     image(crossHair, mouseX, mouseY);
   }
 
@@ -262,6 +270,7 @@ void drawButtons()
   image(title, width/2, height/5);
   image(start, width/2, height/2);
   image(load, width/2, height/1.25);
+  
 }
 
 void saveGame()
@@ -326,13 +335,13 @@ void mousePressed()
   if ( dist(mouseX, mouseY, HUD.settingsXpos, HUD.settingsYpos ) < 100)
     pause = true;
   //save the game through this button
-  if (dist(mouseX, mouseY, HUD.saveXpos, HUD.saveYpos ) < 100)
+  if (dist(mouseX, mouseY, HUD.saveXpos, HUD.saveYpos ) < 100 && pause)
     saveGame();
   //resume the game with this button
-  if (dist(mouseX, mouseY, HUD.unPauseXpos, HUD.unPauseYpos ) < 100)
+  if (dist(mouseX, mouseY, HUD.unPauseXpos, HUD.unPauseYpos ) < 100 && pause)
     pause = false;
   //this button is for exiting the game
-  if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
+  if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
     exit();
 
   for (int i = 0; i < z.size(); i++)

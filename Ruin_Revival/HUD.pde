@@ -19,13 +19,13 @@ class HUD
     settingsYpos = 75;
     
     unPauseXpos = width/2;
-    unPauseYpos = (height/2)-100;
+    unPauseYpos = (height/2)-200;
     
     saveXpos = width/2;
     saveYpos = height/2;
     
     exitXpos = width/2;
-    exitYpos = (height/2)+100;
+    exitYpos = (height/2)+200;
     
   }
 
@@ -37,5 +37,12 @@ class HUD
     }
     
     image(settings, settingsXpos, settingsYpos);
+  }
+  
+  void drawSettingsOptions()
+  {
+    image(resume, unPauseXpos, unPauseYpos);
+    image(save, saveXpos, saveYpos);
+    image(exit, exitXpos, exitYpos);
   }
 }
