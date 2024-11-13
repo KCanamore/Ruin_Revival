@@ -158,7 +158,7 @@ void draw()
     
     image(crossHair, mouseX, mouseY);
   }
-
+  
   zomTimer++;
 }
 
@@ -328,17 +328,15 @@ void mousePressed()
   if (dist(mouseX, mouseY, HUD.unPauseXpos, HUD.unPauseYpos ) < 100 && pause)
     pause = false;
   //this button is for exiting the game
-<<<<<<< HEAD
+
   if( startGame == true || loadGame == true )
   {
     if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
       exit();
   }
-=======
   if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
     exit();
 
->>>>>>> 09406ac93a7c821828ea782b41b32bd124ecaf8a
   for (int i = 0; i < z.size(); i++)
     if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
     {
