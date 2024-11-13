@@ -160,20 +160,6 @@ void draw()
   }
 
   zomTimer++;
-
-  //push();
-  //textSize(50);
-  //fill(255);
-  ////text("cabin barriers: "+cabinBarrier.size(), 200, 200);
-  //text(("pUp x: "+ pUp.xPos), 200, 200);
-  //text(("pUp y: " + pUp.yPos), 200, 300);
-  //text(("player xPos: " + p.xPos), 200, 400);
-  //text(("player yPos: " + p.yPos), 200, 500);
-  //pop();
-  println("height: "+ height);
-  println("width: " + width);
-  println("player xPos: " + p.xPos);
-  println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
@@ -342,9 +328,17 @@ void mousePressed()
   if (dist(mouseX, mouseY, HUD.unPauseXpos, HUD.unPauseYpos ) < 100 && pause)
     pause = false;
   //this button is for exiting the game
+<<<<<<< HEAD
+  if( startGame == true || loadGame == true )
+  {
+    if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
+      exit();
+  }
+=======
   if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
     exit();
 
+>>>>>>> 09406ac93a7c821828ea782b41b32bd124ecaf8a
   for (int i = 0; i < z.size(); i++)
     if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
     {
