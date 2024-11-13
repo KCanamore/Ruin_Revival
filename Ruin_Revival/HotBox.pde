@@ -20,7 +20,8 @@ class HotBox
     if (isSelected == false)
     {
       image(unHot, xPos+100, yPos);
-    } else
+    } 
+    else
     {
       image(hot, xPos+100, yPos);
     }
