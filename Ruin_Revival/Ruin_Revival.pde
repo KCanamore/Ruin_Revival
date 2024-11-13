@@ -358,6 +358,47 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
     
+  if(key == '1')
+  {
+   HUD.h[0].isSelected = true; 
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
+  }
+  if(key == '2')
+  {
+   HUD.h[1].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
+  }
+  if(key == '3')
+  {
+   HUD.h[2].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
+  }
+  if(key == '4')
+  {
+   HUD.h[3].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[4].isSelected = false;
+  }
+  if(key == '5')
+  {
+   HUD.h[4].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
+  }
+    
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
   {
     inCabin = true;
@@ -368,7 +409,7 @@ void keyPressed()
     inCabin = false;
     outOfCabin = true;
   }
-   
+     
   for(int i = 0; i < pUp.length; i++)
   {
     if( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && ( key == 'f'  || key == 'F' ) )
