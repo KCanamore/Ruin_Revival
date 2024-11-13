@@ -22,4 +22,5 @@ class Barrier
     text( "X: " + barrierXpos + "\nY: " + barrierYpos, barrierXpos, barrierYpos );
     text( type, barrierXpos, barrierYpos+ 50 );
   }
+  
 }
