@@ -7,6 +7,8 @@ class HUD
   float unPauseXpos, unPauseYpos;
   float saveXpos, saveYpos;
   float exitXpos, exitYpos;
+  float healthXpos, healthYpos;
+  int health;
 
   public HUD()
   {
@@ -27,6 +29,11 @@ class HUD
     exitXpos = width/2;
     exitYpos = (height/2)+200;
     
+    healthXpos = width-250;
+    healthYpos = height-100;
+    
+    health = 200;
+    
   }
 
   void drawHUD()
@@ -44,5 +51,14 @@ class HUD
     image(resume, unPauseXpos, unPauseYpos);
     image(save, saveXpos, saveYpos);
     image(exit, exitXpos, exitYpos);
+  }
+  
+  void drawHealthBar()
+  {
+    push();
+    fill(255, 0, 0);
+    rectMode(CORNER);
+    rect(healthXpos, healthYpos, health, 30 );
+    pop();
   }
 }

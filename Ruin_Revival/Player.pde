@@ -3,6 +3,7 @@ class Player
   float xPos, yPos;
   float xSpd, ySpd;
   int size;
+  int health;
   boolean left, right, up, down;
 
   public Player()
@@ -89,5 +90,9 @@ class Player
         b.barrierYpos -= ySpd;
       B.barrierYpos -= ySpd;
     }
+    
+    for (int i = 0; i < z.size(); i++)
+      if( dist(xPos, yPos, z.get(i).xPos, z.get(i).yPos)< 25)
+        HUD.health -= 2;
   }
 }

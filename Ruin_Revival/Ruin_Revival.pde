@@ -101,7 +101,7 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 1; i++)
+  for (int i = 0; i < 100; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -149,6 +149,7 @@ void draw()
     }
     p.drawPlayer();
     HUD.drawHUD();
+    HUD.drawHealthBar();
     blockPathing( p );
     blockPathingZom( z );
     
