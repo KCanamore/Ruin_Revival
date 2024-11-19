@@ -58,7 +58,15 @@ class HUD
     push();
     fill(255, 0, 0);
     rectMode(CORNER);
+    push();
+    strokeWeight(5);
+    stroke(0);
+    noFill();
+    rect(healthXpos, healthYpos, 200, 30 );
+    pop();
     rect(healthXpos, healthYpos, health, 30 );
     pop();
+    if( health > 200 )
+      health = 200;
   }
 }

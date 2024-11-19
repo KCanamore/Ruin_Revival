@@ -29,7 +29,6 @@ int dangerSize = 90;
 boolean inCabin = false;
 boolean outOfCabin = false;
 boolean pause = false;
-boolean kelpShakeUsed = false;
 
 int zomTimer = 0;
 
@@ -47,17 +46,17 @@ String miniMapStr = "";
 
 void setup()
 {
-
+  
   w = new Weapon("waifu_katana", ".png");
-
+  
   fullScreen();
   noSmooth();
-
+  
   //backMusic = new SoundFile(this, "music.mp3");
-
+  
   rectMode(CENTER);
   imageMode(CENTER);
-
+  
   title = loadImage("title.png");
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
@@ -102,7 +101,7 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 1; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -121,7 +120,7 @@ void draw()
   //  backMusic.play();
   //  musicOn = false;
   //}
-
+  
   background(0);
   drawButtons();
 
@@ -130,22 +129,22 @@ void draw()
     background(0);
     w.findDangerZone(50);
     noCursor();
-
-    if (inCabin)
-      c.drawCabinInside();
+    
+    if(inCabin)
+    c.drawCabinInside();
     else
-      m.drawMap();
-
-    if (!pause)
-      p.movePlayer();
-
+    m.drawMap();
+    
+    if(!pause)
+    p.movePlayer();
+    
     w.drawWeapon(p.xPos, p.yPos);
     w.drawWeaponHitBox(p.xPos, p.yPos);
     //B.drawBarrier();
     for (int i = 0; i < z.size(); i++)
     {
       z.get(i).drawZombie();
-      if (!pause)
+      if(!pause)
         z.get(i).moveZombie();
     }
     p.drawPlayer();
@@ -153,16 +152,15 @@ void draw()
     HUD.drawHealthBar();
     blockPathing( p );
     blockPathingZom( z );
-
-    if (pause)
+    
+    if(pause)
       HUD.drawSettingsOptions();
-
-    if (HUD.health <= 0)
+      
+    if(HUD.health <= 0)
       exit();
-
+    
     image(crossHair, mouseX, mouseY);
   }
-
   zomTimer++;
 }
 
@@ -320,7 +318,7 @@ void mousePressed()
     loadGame();
     musicOn = true;
   }
-
+  
   //open the settings menu
   if ( dist(mouseX, mouseY, HUD.settingsXpos, HUD.settingsYpos ) < 100)
     pause = true;
@@ -332,33 +330,27 @@ void mousePressed()
     pause = false;
   //this button is for exiting the game
 
-  if ( startGame == true || loadGame == true )
+  if( startGame == true || loadGame == true )
   {
-    if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
+    if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
       exit();
   }
+  if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
+    exit();
 
+  for (int i = 0; i < z.size(); i++)
+    if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
+    {
+      z.get(i).hurt = true;
+      z.get(i).health -= 5;
+      if (z.get(i).health == 0)
+        z.remove(i);
+    }
     
-  for (int i = 0; i < pUp.length; i++)
-  {
-    if (mouseButton == RIGHT && HUD.h[pUp[i].item].amount > 0)
-      kelpShakeUsed = true;
-    else
-      kelpShakeUsed = false;
-  }
-  if (mouseButton == LEFT)
-  {
-    w.strikeZoms();
-    w.attack();
-    for (int i = 0; i < z.size(); i++)
-      if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
-      {
-        z.get(i).hurt = true;
-        z.get(i).health -= 5;
-        if (z.get(i).health == 0)
-          z.remove(i);
-      }
-  }
+  if(mouseButton == RIGHT)
+    kelpShakeUsed = true;
+  w.strikeZoms();
+  w.attack();
 }
 
 void keyPressed()
@@ -371,61 +363,62 @@ void keyPressed()
     p.up = true;
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
-
-  if (key == '1')
+    
+  if(key == '1')
   {
-    HUD.h[0].isSelected = true;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
+   HUD.h[0].isSelected = true; 
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
   }
-  if (key == '2')
+  if(key == '2')
   {
-    HUD.h[1].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
+   HUD.h[1].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
   }
-  if (key == '3')
+  if(key == '3')
   {
-    HUD.h[2].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
+   HUD.h[2].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = false;
   }
-  if (key == '4')
+  if(key == '4')
   {
-    HUD.h[3].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[4].isSelected = false;
+   HUD.h[3].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[4].isSelected = false;
   }
-  if (key == '5')
+  if(key == '5')
   {
-    HUD.h[4].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
+   HUD.h[4].isSelected = true;
+   HUD.h[0].isSelected = false;
+   HUD.h[1].isSelected = false;
+   HUD.h[2].isSelected = false;
+   HUD.h[3].isSelected = false;
   }
-
-  if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
+    
+  if ( key == 'e' || key == 'E' )
   {
     inCabin = true;
     outOfCabin = false;
-  } else if ( inCabin == true && p.yPos > 965 && key == 'e' || key == 'E')
+  }
+  else if ( inCabin == true && key == 'e' || key == 'E')
   {
     inCabin = false;
     outOfCabin = true;
   }
-
-  for (int i = 0; i < pUp.length; i++)
+     
+  for(int i = 0; i < pUp.length; i++)
   {
-    if ( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && ( key == 'f'  || key == 'F' ) )
+    if( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && ( key == 'f'  || key == 'F' ) )
     {
       pUp[i].isPickedUp = true;
       HUD.h[pUp[i].item].amount++;
@@ -443,6 +436,6 @@ void keyReleased()
     p.up = false;
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = false;
-  if (key == 'e' || key == 'E')
+  if (key == 'e' || key == 'E') 
     c.checkDoorInteraction();
 }

@@ -107,6 +107,9 @@ class Player
         HUD.health -= 5;
       }
       
+   if(kelpShakeUsed)
+     HUD.health += 5;
+      
    if(invunTime == 0)
      invun = false;
    

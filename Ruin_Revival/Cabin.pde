@@ -52,18 +52,20 @@ class Cabin
   {
     image(cabinInside, cabinXpos, cabinYpos);
   }
+  
   void drawCabinDoor(float x, float y)
   {
     doorX = x;
     doorY = y;
     rect(doorX, doorY, doorWidth, doorHeight);
   }
+  
   void checkDoorInteraction()
   {
     if (!inCabin) 
     {
       // Check if player is near the door to enter the cabin
-      if (dist(p.xPos, p.yPos, doorX + doorWidth / 2, doorY + doorHeight / 2) < 100 ) 
+      if (dist(p.xPos, p.yPos, doorX + doorWidth / 2, doorY + doorHeight / 2) < 25 ) 
       {
         inCabin = true;
         p.xPos = doorX;
