@@ -5,6 +5,9 @@ class Player
   int size;
   int health;
   boolean left, right, up, down;
+  
+  boolean invun;
+  int invunTime;
 
   public Player()
   {
@@ -20,6 +23,10 @@ class Player
   void drawPlayer()
   {
     fill(255);
+    
+    if(invun)
+      fill(50);
+    
     circle(xPos, yPos, size);
   }
 
@@ -92,7 +99,18 @@ class Player
     }
     
     for (int i = 0; i < z.size(); i++)
-      if( dist(xPos, yPos, z.get(i).xPos, z.get(i).yPos)< 25)
-        HUD.health -= 2;
+      if( dist(xPos, yPos, z.get(i).xPos, z.get(i).yPos)< 25 && invun == false)
+      {
+        invun = true;
+        invunTime = 50;
+        
+        HUD.health -= 5;
+      }
+      
+   if(invunTime == 0)
+     invun = false;
+   
+   if(invunTime > 0)
+     invunTime--;
   }
 }

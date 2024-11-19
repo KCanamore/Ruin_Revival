@@ -155,6 +155,9 @@ void draw()
     
     if(pause)
       HUD.drawSettingsOptions();
+      
+    if(HUD.health <= 0)
+      exit();
     
     image(crossHair, mouseX, mouseY);
   }
