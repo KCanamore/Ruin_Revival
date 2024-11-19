@@ -102,7 +102,7 @@ class Player
       if( dist(xPos, yPos, z.get(i).xPos, z.get(i).yPos)< 25 && invun == false)
       {
         invun = true;
-        invunTime = 50;
+        invunTime = 30;
         
         HUD.health -= 5;
       }
