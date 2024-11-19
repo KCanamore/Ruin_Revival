@@ -32,7 +32,7 @@ class HUD
     healthXpos = width-250;
     healthYpos = height-100;
     
-    health = 200;
+    health = 100;
     
   }
 
