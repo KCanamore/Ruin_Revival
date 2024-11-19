@@ -334,11 +334,9 @@ void mousePressed()
 
   if( startGame == true || loadGame == true )
   {
-    if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100)
+    if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
       exit();
   }
-  if (dist(mouseX, mouseY, HUD.exitXpos, HUD.exitYpos ) < 100 && pause)
-    exit();
 
   for (int i = 0; i < z.size(); i++)
     if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
