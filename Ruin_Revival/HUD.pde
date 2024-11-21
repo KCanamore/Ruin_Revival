@@ -84,7 +84,7 @@ class HUD
     
     if( t == 3 )
     {
-      
+      HUD.health += 50;
     }
     
     if( t == 4 )

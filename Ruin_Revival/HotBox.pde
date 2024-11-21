@@ -44,7 +44,11 @@ class HotBox
     }
     if(type == 3)
     {
+      if( amount == 0 )
+        tint(50);
       
+      image(burbur, xPos+100, yPos);
+      noTint();
     }
     if(type == 4)
     {

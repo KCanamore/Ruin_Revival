@@ -25,7 +25,7 @@ class Map
     mapStr += "^             !";
     mapStr += "^     @  $$$  !"; // * = cobble
     mapStr += "^    ***  $$  !";
-    mapStr += "^      *<>    !"; // #/%/!/^ = trees
+    mapStr += "^      /<>    !"; // #/%/!/^ = trees
     mapStr += "^        ***  !";
     mapStr += "^   $$$   **  !"; // $ = water
     mapStr += "^  $$$$$   ** !";
@@ -59,6 +59,8 @@ class Map
           //pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
         if( map[j][i] == '>' )
           pUp [1]= new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), 1);
+        if( map[j][i] == '/' )
+          pUp [2]= new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), 2);
     }
     }
   }
@@ -108,6 +110,11 @@ class Map
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[1].drawPickUp();
+        }
+        else if (map[j][i]=='/')
+        {
+          image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+          pUp[2].drawPickUp();
         }
         else if (map[j][i]=='@')
         {

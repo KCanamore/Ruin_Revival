@@ -13,10 +13,10 @@ Map m;
 Cabin c;
 Barrier B;
 Weapon w;
-PickUp pUp [] = new PickUp [2];
+PickUp pUp [] = new PickUp [3];
 HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur;
 
 boolean startGame, loadGame;
 
@@ -74,6 +74,7 @@ void setup()
   hot = loadImage("hotbar-panel-selected.png");
   kelpJ = loadImage("Kelp_Juice.png");
   kelpS = loadImage("Kelp_Shake.png");
+  burbur = loadImage("burbur.png");
   settings = loadImage("gear.png");
   resume = loadImage("resume_button.png");
   save = loadImage("save_button.png");
@@ -94,6 +95,7 @@ void setup()
   hot.resize(100, 0);
   kelpJ.resize(90, 0);
   kelpS.resize(90, 0);
+  burbur.resize(90, 0);
   settings.resize(100, 0);
   resume.resize(350, 0);
   save.resize(350, 0);
