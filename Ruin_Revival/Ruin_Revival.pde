@@ -16,7 +16,7 @@ Weapon w;
 PickUp pUp [] = new PickUp [3];
 HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player;
 
 boolean startGame, loadGame;
 
@@ -58,6 +58,7 @@ void setup()
   rectMode(CENTER);
   imageMode(CENTER);
 
+  player = loadImage("player.png");
   title = loadImage("title.png");
   start = loadImage("start_button.png");
   load = loadImage("load_button.png");
@@ -79,6 +80,7 @@ void setup()
   resume = loadImage("resume_button.png");
   save = loadImage("save_button.png");
   exit = loadImage("exit_button.png");
+  player.resize(50, 0);
   title.resize(1100, 0);
   start.resize(450, 0);
   load.resize(450, 0);

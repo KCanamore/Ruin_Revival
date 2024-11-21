@@ -22,12 +22,11 @@ class Player
 
   void drawPlayer()
   {
-    fill(255);
-    
-    if(invun)
-      fill(50);
-    
-    circle(xPos, yPos, size);
+    push();
+    translate(xPos,yPos);
+    rotate( atan2(mouseY-yPos,mouseX-xPos) - HALF_PI);
+    image(player, 0,0);
+    pop();
   }
 
   void movePlayer()
