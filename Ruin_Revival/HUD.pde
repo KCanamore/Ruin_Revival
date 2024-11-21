@@ -69,4 +69,31 @@ class HUD
     if( health > 200 )
       health = 200;
   }
+  
+  void handleHeals(int t)
+  {
+    if( t == 1 )
+    {
+      HUD.health += 10;
+    }
+    
+    if( t == 2 )
+    {
+      HUD.health += 25;
+    }
+    
+    if( t == 3 )
+    {
+      
+    }
+    
+    if( t == 4 )
+    {
+      
+    }
+    
+    if( t == 5 )
+    {
+      
+    }
 }

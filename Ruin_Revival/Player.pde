@@ -108,8 +108,11 @@ class Player
       }
       
    if(kelpShakeUsed)
-     HUD.health += 5;
-      
+   {
+     HUD.health += 25;
+     kelpShakeUsed = false;
+   }
+   
    if(invunTime == 0)
      invun = false;
    

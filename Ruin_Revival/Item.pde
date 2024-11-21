@@ -15,4 +15,6 @@ class Item
   {
     image(image, x, y);
   }
+    
+  }
 }

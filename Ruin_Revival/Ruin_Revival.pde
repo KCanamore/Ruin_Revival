@@ -341,8 +341,11 @@ void mousePressed()
     
   for (int i = 0; i < pUp.length; i++)
   {
-    if (mouseButton == RIGHT && HUD.h[pUp[i].item].amount > 0)
-      kelpShakeUsed = true;
+    if (mouseButton == RIGHT &&  HUD.h[i].isSelected == true &&HUD.h[pUp[i].item].amount > 0)
+    {
+      HUD.handleHeals(i+1);
+      HUD.h[pUp[i].item].amount--;
+    }
     else
       kelpShakeUsed = false;
   }
