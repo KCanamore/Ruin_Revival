@@ -106,7 +106,7 @@ void setup()
   loadGame = false;
 
   p = new Player();
-  for (int i = 0; i < 100; i++)
+  for (int i = 0; i < 2; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -157,6 +157,16 @@ void draw()
     HUD.drawHealthBar();
     blockPathing( p );
     blockPathingZom( z );
+    
+    for (int i = 0; i < pUp.length; i++)
+    {
+      if ( dist(p.xPos, p.yPos, pUp[i].xPos, pUp[i].yPos) < 65 && pUp[i].isPickedUp == false)
+      {
+        textSize(25);
+        fill(255);
+        text("Press F to pick up", pUp[i].xPos, pUp[i].yPos - 50);
+      }  
+    }
 
     if (pause)
       HUD.drawSettingsOptions();
