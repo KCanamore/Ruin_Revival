@@ -16,7 +16,7 @@ Weapon w;
 PickUp pUp [] = new PickUp [3];
 HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign;
 
 boolean startGame, loadGame;
 
@@ -70,6 +70,7 @@ void setup()
   grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
+  sign = loadImage("sign.png");
   crossHair = loadImage("cross-hair.png");
   unHot = loadImage("hotbar-panel.png");
   hot = loadImage("hotbar-panel-selected.png");
@@ -92,6 +93,7 @@ void setup()
   grass.resize((250/mapScale), 0);
   cobble.resize((250/mapScale), 0);
   cabin.resize((250/mapScale), 0);
+  sign.resize(60, 0);
   crossHair.resize(50, 0);
   unHot.resize(100, 0);
   hot.resize(100, 0);

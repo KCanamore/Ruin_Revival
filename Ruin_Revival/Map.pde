@@ -24,7 +24,7 @@ class Map
     mapStr += "###############"; //15x15 map
     mapStr += "^             !";
     mapStr += "^     @  $$$  !"; // * = cobble
-    mapStr += "^    ***  $$  !";
+    mapStr += "^ &  ***  $$  !";
     mapStr += "^      /<>    !"; // #/%/!/^ = trees
     mapStr += "^        ***  !";
     mapStr += "^   $$$   **  !"; // $ = water
@@ -33,9 +33,9 @@ class Map
     mapStr += "^  $$$$$  **  !";
     mapStr += "^   $$$   **  !"; // @ = cabin
     mapStr += "^       ***   !";
-    mapStr += "^  *******    !"; // < = test PickUp // REMOVE!!!
+    mapStr += "^  *******    !"; // < = kelp juice || > = kelp shake || / = burbur
     mapStr += "^             !";
-    mapStr += "%%%%%%%%%%%%%%%";
+    mapStr += "%%%%%%%%%%%%%%%"; // & = signs
 
     //Populates char array with the characters of mapStr
     for ( int i = 0; i < map.length; i++ )
@@ -54,14 +54,14 @@ class Map
           barrier.add( new Barrier(j*(250/mapScale), i*(250/mapScale), 1) );
         if ( map[j][i] == '$' )
           barrier.add( new Barrier(j*(250/mapScale), i*(250/mapScale), 1) );
-        if( map[j][i] == '<' )
+        if ( map[j][i] == '<' )
           pUp [0]= new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), 0);
-          //pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
-        if( map[j][i] == '>' )
+        //pUp = new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), new Item(1, "Kelp_Shake", ".png"));
+        if ( map[j][i] == '>' )
           pUp [1]= new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), 1);
-        if( map[j][i] == '/' )
+        if ( map[j][i] == '/' )
           pUp [2]= new PickUp(m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale), 2);
-    }
+      }
     }
   }
 
@@ -100,27 +100,33 @@ class Map
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } 
-        else if (map[j][i]=='<')
+        } else if (map[j][i]=='<')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[0].drawPickUp();
-        }
-        else if (map[j][i]=='>')
+        } else if (map[j][i]=='>')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[1].drawPickUp();
-        }
-        else if (map[j][i]=='/')
+        } else if (map[j][i]=='/')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[2].drawPickUp();
-        }
-        else if (map[j][i]=='@')
+        } else if (map[j][i]=='@')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           c.drawCabinDoor((m.mapXpos+j*(250/mapScale))-35, (m.mapYpos+i*(250/mapScale))+115);
+        } else if (map[j][i]=='&')
+        {
+          image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+          image(sign, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+          if (dist(p.xPos, p.yPos, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale)) < 100)
+          {
+            textSize(25);
+            fill(255);
+            text("SKIBIDI", m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale) - 60);
+          }
         }
       }
   }
