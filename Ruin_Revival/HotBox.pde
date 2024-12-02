@@ -26,7 +26,7 @@ class HotBox
       image(hot, xPos+100, yPos);
     }
     
-    if(type == 1)
+    if(type == 1 )
     {
       if( amount == 0 )
         tint(50);
@@ -34,7 +34,7 @@ class HotBox
       image(kelpJ, xPos+100, yPos);
       noTint();
     }
-    if(type == 2)
+    if(type == 2 )
     {
       if( amount == 0 )
         tint(50);
@@ -42,7 +42,7 @@ class HotBox
       image(kelpS, xPos+100, yPos);
       noTint();
     }
-    if(type == 3)
+    if(type == 3 )
     {
       if( amount == 0 )
         tint(50);
@@ -50,11 +50,11 @@ class HotBox
       image(burbur, xPos+100, yPos);
       noTint();
     }
-    if(type == 4)
+    if(type == 4 )
     {
       
     }
-    if(type == 5)
+    if(type == 5 )
     {
       
     }

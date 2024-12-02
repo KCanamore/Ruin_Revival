@@ -9,6 +9,7 @@ class HUD
   float exitXpos, exitYpos;
   float healthXpos, healthYpos;
   int health;
+  int scrollCount;
 
   public HUD()
   {
@@ -96,4 +97,53 @@ class HUD
     {
       
     }
+  }
+  void scrollingThroughItems()
+  {
+    if (key == '1' || scrollCount == 1)
+    {
+      h[0].isSelected = true;
+      h[1].isSelected = false;
+      h[2].isSelected = false;
+      h[3].isSelected = false;
+      h[4].isSelected = false;
+    }
+    if (key == '2' || scrollCount == 2)
+    {
+      h[1].isSelected = true;
+      h[0].isSelected = false;
+      h[2].isSelected = false;
+      h[3].isSelected = false;
+      h[4].isSelected = false;
+    }
+    if (key == '3' || scrollCount == 3)
+    {
+      h[2].isSelected = true;
+      h[0].isSelected = false;
+      h[1].isSelected = false;
+      h[3].isSelected = false;
+      h[4].isSelected = false;
+    }
+    if (key == '4' || scrollCount == 4)
+    {
+      h[3].isSelected = true;
+      h[0].isSelected = false;
+      h[1].isSelected = false;
+      h[2].isSelected = false;
+      h[4].isSelected = false;
+    }
+    if (key == '5' || scrollCount == 5)
+    {
+      h[4].isSelected = true;
+      h[0].isSelected = false;
+      h[1].isSelected = false;
+      h[2].isSelected = false;
+      h[3].isSelected = false;
+    }
+    
+    if(scrollCount < 1)
+      scrollCount = 1;
+    if(scrollCount > 5)
+      scrollCount = 5;
+  }
 }

@@ -16,7 +16,7 @@ Weapon w;
 PickUp pUp [] = new PickUp [3];
 HUD HUD;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player;
 
 boolean startGame, loadGame;
 
@@ -70,7 +70,6 @@ void setup()
   grass = loadImage("grass4.png");
   cobble = loadImage("cobble.png");
   cabin = loadImage("cabin.png");
-  sign = loadImage("sign.png");
   crossHair = loadImage("cross-hair.png");
   unHot = loadImage("hotbar-panel.png");
   hot = loadImage("hotbar-panel-selected.png");
@@ -93,7 +92,6 @@ void setup()
   grass.resize((250/mapScale), 0);
   cobble.resize((250/mapScale), 0);
   cabin.resize((250/mapScale), 0);
-  sign.resize(60, 0);
   crossHair.resize(50, 0);
   unHot.resize(100, 0);
   hot.resize(100, 0);
@@ -117,6 +115,8 @@ void setup()
   HUD = new HUD();
 
   m.setupMap();
+  
+  textSize(100);
 }
 
 void draw()
@@ -181,6 +181,7 @@ void draw()
   }
 
   zomTimer++;
+  text(HUD.scrollCount,width/2,height/2);
 }
 
 void blockPathing( Player o )
@@ -392,47 +393,7 @@ void keyPressed()
   if (key == 's' || key == 'S' || keyCode == DOWN)
     p.down = true;
 
-  if (key == '1')
-  {
-    HUD.h[0].isSelected = true;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
-  }
-  if (key == '2')
-  {
-    HUD.h[1].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
-  }
-  if (key == '3')
-  {
-    HUD.h[2].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[3].isSelected = false;
-    HUD.h[4].isSelected = false;
-  }
-  if (key == '4')
-  {
-    HUD.h[3].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[4].isSelected = false;
-  }
-  if (key == '5')
-  {
-    HUD.h[4].isSelected = true;
-    HUD.h[0].isSelected = false;
-    HUD.h[1].isSelected = false;
-    HUD.h[2].isSelected = false;
-    HUD.h[3].isSelected = false;
-  }
-
+  
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
   {
     inCabin = true;
