@@ -78,19 +78,23 @@ class Map
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree1, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]=='!')
+        }
+        else if (map[j][i]=='!')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree2, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]=='%')
+        } 
+        else if (map[j][i]=='%')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree3, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]=='^')
+        } 
+        else if (map[j][i]=='^')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(tree4, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]==' ')
+        } 
+        else if (map[j][i]==' ')
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
         else if (map[j][i]=='$')
           image(water, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
@@ -100,32 +104,37 @@ class Map
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
-        } else if (map[j][i]=='<')
+        } 
+        else if (map[j][i]=='<')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[0].drawPickUp();
-        } else if (map[j][i]=='>')
+        } 
+        else if (map[j][i]=='>')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[1].drawPickUp();
-        } else if (map[j][i]=='/')
+        } 
+        else if (map[j][i]=='/')
         {
           image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           pUp[2].drawPickUp();
-        } else if (map[j][i]=='@')
+        } 
+        else if (map[j][i]=='@')
         {
           image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(cabin, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           c.drawCabinDoor((m.mapXpos+j*(250/mapScale))-35, (m.mapYpos+i*(250/mapScale))+115);
-        } else if (map[j][i]=='&')
+        } 
+        else if (map[j][i]=='&')
         {
-          image(cobble, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
+          image(grass, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           image(sign, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale));
           if (dist(p.xPos, p.yPos, m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale)) < 100)
           {
             textSize(25);
             fill(255);
-            text("SKIBIDI", m.mapXpos+j*(250/mapScale), m.mapYpos+i*(250/mapScale) - 60);
+            text("Use WASD\n or Arrow keys\n to move", m.mapXpos+j*(250/mapScale)-25, m.mapYpos+i*(250/mapScale) - 60);
           }
         }
       }
