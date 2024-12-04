@@ -107,7 +107,7 @@ void setup()
   exit.resize(350, 0);
   startGame = false;
   loadGame = false;
-
+  
   p = new Player();
   for (int i = 0; i < 2; i++)
   {
@@ -403,6 +403,7 @@ void keyPressed()
     HUD.h[2].isSelected = false;
     HUD.h[3].isSelected = false;
     HUD.h[4].isSelected = false;
+    HUD.scrollCount = 1;
   }
   if (key == '2')
   {
@@ -411,6 +412,7 @@ void keyPressed()
     HUD.h[2].isSelected = false;
     HUD.h[3].isSelected = false;
     HUD.h[4].isSelected = false;
+    HUD.scrollCount = 2;
   }
   if (key == '3')
   {
@@ -419,6 +421,7 @@ void keyPressed()
     HUD.h[1].isSelected = false;
     HUD.h[3].isSelected = false;
     HUD.h[4].isSelected = false;
+    HUD.scrollCount = 3;
   }
   if (key == '4')
   {
@@ -427,6 +430,7 @@ void keyPressed()
     HUD.h[1].isSelected = false;
     HUD.h[2].isSelected = false;
     HUD.h[4].isSelected = false;
+    HUD.scrollCount = 4;
   }
   if (key == '5')
   {
@@ -435,6 +439,7 @@ void keyPressed()
     HUD.h[1].isSelected = false;
     HUD.h[2].isSelected = false;
     HUD.h[3].isSelected = false;
+    HUD.scrollCount = 5;
   }
 
   if (key == 'e' || key == 'E' && dist(B.barrierXpos, B.barrierYpos, p.xPos, p.yPos) <= 250)
@@ -455,6 +460,7 @@ void keyPressed()
       HUD.h[pUp[i].item].amount++;
     }
   }
+  
 }
 
 void keyReleased()

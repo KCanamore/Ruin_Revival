@@ -22,12 +22,12 @@ class Boss
   void drawBoss()
   {
     //fill(#FA0505);
-    if ( hurt && health == 25)
+    if ( hurt && health == 35)
       fill(255, 0, 0);
-    else if ( hurt && health == 15)
+    else if ( hurt && health == 20)
       fill(255, 0, 255);
-    else if ( hurt && health == 5)
-      fill(255, 0, 255);
+    else if ( hurt && health == 10)
+      fill(255, 255, 0);
     else
       fill(0);
 
