@@ -15,6 +15,7 @@ Barrier B;
 Weapon w;
 PickUp pUp [] = new PickUp [3];
 HUD HUD;
+Boss b;
 
 PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign;
 
@@ -115,6 +116,7 @@ void setup()
   m = new Map();
   c = new Cabin();
   HUD = new HUD();
+  b = new Boss(random(width), random(height));
 
   m.setupMap();
 }
@@ -154,6 +156,8 @@ void draw()
       if (!pause)
         z.get(i).moveZombie();
     }
+    b.drawBoss();
+    b.moveBoss();
     p.drawPlayer();
     HUD.drawHUD();
     HUD.drawHealthBar();

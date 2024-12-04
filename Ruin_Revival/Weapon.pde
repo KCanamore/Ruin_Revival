@@ -74,7 +74,7 @@ class Weapon
     for ( Zombies Z : z )
     {
       float zomAngle = atan2( Z.yPos-p.yPos, Z.xPos-p.xPos );
-      if ( zomAngle < dangerAngle+QUARTER_PI && zomAngle > dangerAngle-QUARTER_PI && dist(p.xPos, p.yPos, Z.xPos, Z.yPos) < 110)
+      if ( zomAngle < dangerAngle+QUARTER_PI && zomAngle > dangerAngle-QUARTER_PI && dist(p.xPos, p.yPos, Z.xPos, Z.yPos) < 110 || dist(p.xPos, p.yPos, b.xPos, b.yPos) < 110)
         Z.hurt = true;
     }
   }

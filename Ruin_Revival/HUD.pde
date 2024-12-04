@@ -14,9 +14,7 @@ class HUD
   public HUD()
   {
     for (int i = 0; i < h.length; i++)
-    {
       h[i] = new HotBox(100*i, 1000, false, i+1);
-    }
     
     settingsXpos = width-75;
     settingsYpos = 75;
@@ -33,7 +31,7 @@ class HUD
     healthXpos = width-250;
     healthYpos = height-100;
     
-    health = 100;
+    health = 200;
     
   }
 
