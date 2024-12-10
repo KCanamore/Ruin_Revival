@@ -109,6 +109,14 @@ class Player
         
         HUD.health -= 5;
       }
+      
+   if( dist(xPos, yPos, b.xPos, b.yPos)< 25 && invun == false)
+      {
+        invun = true;
+        invunTime = 30;
+        
+        HUD.health -= 25;
+      }
    
    if(invunTime == 0)
      invun = false;
