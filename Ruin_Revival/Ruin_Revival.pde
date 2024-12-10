@@ -111,7 +111,7 @@ void setup()
   loadGame = false;
   
   p = new Player();
-  for (int i = 0; i < 2; i++)
+  for (int i = 0; i < 1000; i++)
   {
     z.add( new Zombies( random(width), random(height) ) );
   }
@@ -196,8 +196,8 @@ void draw()
   }
 
   zomTimer++;
-  println("player xPos: "+p.xPos);
-  println("player yPos: "+p.yPos);
+  println("player xPos: " + p.xPos);
+  println("player yPos: " + p.yPos);
 }
 
 void blockPathing( Player o )
@@ -392,7 +392,7 @@ void mousePressed()
       {
         z.get(i).hurt = true;
         z.get(i).health -= w.power;
-        if (z.get(i).health == 0)
+        if (z.get(i).health <= 0)
           z.remove(i);
       }
     if ( dist( b.xPos, b.yPos, w.dangerX, w.dangerY ) < dangerSize )
