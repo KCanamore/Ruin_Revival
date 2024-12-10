@@ -17,7 +17,7 @@ PickUp pUp [] = new PickUp [3];
 HUD HUD;
 Boss b;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign, w_katana;
 
 boolean startGame, loadGame;
 
@@ -49,7 +49,7 @@ String miniMapStr = "";
 void setup()
 {
 
-  w = new Weapon("waifu_katana", ".png");
+  w = new Weapon("katana", ".png");
 
   fullScreen();
   noSmooth();
@@ -82,6 +82,7 @@ void setup()
   resume = loadImage("resume_button.png");
   save = loadImage("save_button.png");
   exit = loadImage("exit_button.png");
+  w_katana = loadImage("waifu_katana.png");
   player.resize(50, 0);
   title.resize(1100, 0);
   start.resize(450, 0);
@@ -105,6 +106,7 @@ void setup()
   resume.resize(350, 0);
   save.resize(350, 0);
   exit.resize(350, 0);
+  w_katana.resize(80, 0);
   startGame = false;
   loadGame = false;
   
@@ -156,14 +158,23 @@ void draw()
       if (!pause)
         z.get(i).moveZombie();
     }
-    b.drawBoss();
-    b.moveBoss();
+    if(b.alive)
+    {
+      b.drawBoss();
+      b.moveBoss();
+    }
     p.drawPlayer();
     HUD.drawHUD();
     HUD.drawHealthBar();
     HUD.scrollingThroughItems();
     blockPathing( p );
     blockPathingZom( z );
+    
+    if(b.health <= 0)
+    {
+      b.alive = false;
+      w.power = 25;
+    }
     
     for (int i = 0; i < pUp.length; i++)
     {
@@ -378,10 +389,14 @@ void mousePressed()
       if ( dist( z.get(i).xPos, z.get(i).yPos, w.dangerX, w.dangerY ) < dangerSize )
       {
         z.get(i).hurt = true;
-        z.get(i).health -= 5;
+        z.get(i).health -= w.power;
         if (z.get(i).health == 0)
           z.remove(i);
       }
+    if ( dist( b.xPos, b.yPos, w.dangerX, w.dangerY ) < dangerSize )
+    {
+        b.health -= w.power;
+    }
   }
 }
 

@@ -5,7 +5,7 @@ class Boss
   float xSpd, ySpd;
   int size;
   int health;
-  boolean left, right, up, down, hurt;
+  boolean left, right, up, down, alive;
 
   public Boss(float x, float y)
   {
@@ -17,16 +17,18 @@ class Boss
     xSpd = 0;
     ySpd = 0;
     health = 50;
+    
+    alive = true;
   }
 
   void drawBoss()
   {
     //fill(#FA0505);
-    if ( hurt && health == 35)
+    if (health <= 35 && health >20)
       fill(255, 0, 0);
-    else if ( hurt && health == 20)
+    else if (health <= 20 && health > 10)
       fill(255, 0, 255);
-    else if ( hurt && health == 10)
+    else if (health <= 10)
       fill(255, 255, 0);
     else
       fill(0);

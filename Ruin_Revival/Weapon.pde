@@ -6,7 +6,7 @@ class Weapon
   float swing;
   float wepAngle = 0;
   boolean attackOn = false;
-  int power = 10;
+  int power = 5;
   float dangerX, dangerY;
 
   public Weapon(String name, String end)
@@ -23,7 +23,10 @@ class Weapon
     rotate(swing);
     wepAngle = atan2(mouseY-yPos, mouseX-xPos);
     rotate(wepAngle-HALF_PI);
-    image(image, 0, 0);
+    if(b.alive)
+      image(image, 0, 0);
+    else
+      image(w_katana, 0, 0);
     pop();
 
 
