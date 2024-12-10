@@ -6,6 +6,7 @@ class Zombies
   int size;
   int zomCount;
   int health;
+  int spawnTimer;
   boolean left, right, up, down, hurt;
 
   public Zombies(float x, float y)
@@ -20,6 +21,7 @@ class Zombies
     xSpd = 0;
     ySpd = 0;
     health = 15;
+    spawnTimer = millis()+1000;
   }
 
   void drawZombie()

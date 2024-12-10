@@ -102,56 +102,40 @@ class HUD
     {
       key = '1';
       keyPressed();
-      //h[0].isSelected = true;
-      //h[1].isSelected = false;
-      //h[2].isSelected = false;
-      //h[3].isSelected = false;
-      //h[4].isSelected = false;
     }
     if (scrollCount == 2)
     {
       key = '2';
       keyPressed();
-      //h[1].isSelected = true;
-      //h[0].isSelected = false;
-      //h[2].isSelected = false;
-      //h[3].isSelected = false;
-      //h[4].isSelected = false;
     }
     if (scrollCount == 3)
     {
       key = '3';
       keyPressed();
-      //h[2].isSelected = true;
-      //h[0].isSelected = false;
-      //h[1].isSelected = false;
-      //h[3].isSelected = false;
-      //h[4].isSelected = false;
     }
     if (scrollCount == 4)
     {
       key = '4';
       keyPressed();
-      //h[3].isSelected = true;
-      //h[0].isSelected = false;
-      //h[1].isSelected = false;
-      //h[2].isSelected = false;
-      //h[4].isSelected = false;
     }
     if (scrollCount == 5)
     {
       key = '5';
       keyPressed();
-      //h[4].isSelected = true;
-      //h[0].isSelected = false;
-      //h[1].isSelected = false;
-      //h[2].isSelected = false;
-      //h[3].isSelected = false;
     }
         
     if(scrollCount < 1)
       scrollCount = 1;
     if(scrollCount > 5)
       scrollCount = 5;
+  }
+  
+  void score()
+  {
+    push();
+    textSize(50);
+    fill(255);
+    text("Score: " + score, 50, 50);
+    pop();
   }
 }

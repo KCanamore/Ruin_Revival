@@ -26,6 +26,7 @@ int mapySize = 15;
 int score;
 int mapScale = 1;
 int dangerSize = 90;
+int spawnTimer;
 
 boolean inCabin = false;
 boolean outOfCabin = false;
@@ -111,10 +112,6 @@ void setup()
   loadGame = false;
   
   p = new Player();
-  for (int i = 0; i < 1000; i++)
-  {
-    z.add( new Zombies( random(width), random(height) ) );
-  }
   m = new Map();
   c = new Cabin();
   HUD = new HUD();
@@ -158,6 +155,8 @@ void draw()
       if (!pause)
         z.get(i).moveZombie();
     }
+    if(millis() > spawnTimer)
+      spawnZombies();
     if(b.alive)
     {
       b.drawBoss();
@@ -165,6 +164,7 @@ void draw()
     }
     p.drawPlayer();
     HUD.drawHUD();
+    HUD.score();
     HUD.drawHealthBar();
     HUD.scrollingThroughItems();
     blockPathing( p );
@@ -196,8 +196,7 @@ void draw()
   }
 
   zomTimer++;
-  println("player xPos: " + p.xPos);
-  println("player yPos: " + p.yPos);
+  println("spawnTimer: " + spawnTimer);
 }
 
 void blockPathing( Player o )
@@ -305,7 +304,7 @@ void saveGame()
     PrintWriter pw = createWriter( "save.txt" );
     pw.println( p.xPos );
     pw.println( p.yPos );
-    //pw.println( score );
+    pw.println( score );
 
     pw.flush(); //Writes the remaining data to the file
     pw.close(); //Finishes the file
@@ -394,6 +393,8 @@ void mousePressed()
         z.get(i).health -= w.power;
         if (z.get(i).health <= 0)
           z.remove(i);
+          
+        score += 50;
       }
     if ( dist( b.xPos, b.yPos, w.dangerX, w.dangerY ) < dangerSize )
     {
@@ -478,6 +479,14 @@ void keyPressed()
     }
   }
   
+}
+void spawnZombies()
+{
+    for (int i = 0; i < 100; i++)
+    {
+      z.add( new Zombies( random(width), random(height) ) );
+    }
+  spawnTimer = millis() + 5000;
 }
 
 void keyReleased()
