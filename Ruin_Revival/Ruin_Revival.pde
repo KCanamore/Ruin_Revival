@@ -486,7 +486,7 @@ void spawnZombies()
     {
       z.add( new Zombies( random(width), random(height) ) );
     }
-  spawnTimer = millis() + 5000;
+  spawnTimer = millis() + 500;
 }
 
 void keyReleased()
