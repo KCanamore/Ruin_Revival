@@ -196,6 +196,8 @@ void draw()
   }
 
   zomTimer++;
+  println("player xPos: "+p.xPos);
+  println("player yPos: "+p.yPos);
 }
 
 void blockPathing( Player o )

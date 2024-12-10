@@ -11,8 +11,8 @@ class Player
 
   public Player()
   {
-    xPos = width/2;
-    yPos = height/2;
+    xPos = 495;
+    yPos = 830;
 
     size = 50;
 
