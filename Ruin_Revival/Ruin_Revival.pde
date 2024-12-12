@@ -17,7 +17,7 @@ PickUp pUp [] = new PickUp [3];
 HUD HUD;
 Boss b;
 
-PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign, w_katana;
+PImage title, start, load, tree1, tree2, tree3, tree4, water, grass, cobble, cabin, crossHair, unHot, hot, kelpJ, kelpS, settings, resume, save, exit, burbur, player, sign, w_katana, hulaBurger;
 
 boolean startGame, loadGame;
 
@@ -86,6 +86,7 @@ void setup()
   save = loadImage("save_button.png");
   exit = loadImage("exit_button.png");
   w_katana = loadImage("waifu_katana.png");
+  hulaBurger = loadImage("waifu_katana.png");
   player.resize(50, 0);
   title.resize(1100, 0);
   start.resize(450, 0);
@@ -110,6 +111,7 @@ void setup()
   save.resize(350, 0);
   exit.resize(350, 0);
   w_katana.resize(80, 0);
+  hulaBurger.resize(90, 0);
   startGame = false;
   loadGame = false;
   
