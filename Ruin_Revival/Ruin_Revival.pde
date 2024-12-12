@@ -27,6 +27,8 @@ int score;
 int mapScale = 1;
 int dangerSize = 90;
 int spawnTimer;
+int zombieCount = 30;
+int level;
 
 boolean inCabin = false;
 boolean outOfCabin = false;
@@ -155,8 +157,12 @@ void draw()
       if (!pause)
         z.get(i).moveZombie();
     }
-    if(millis() > spawnTimer)
+    if(millis() > spawnTimer && z.size() == 0)
+    {
       spawnZombies();
+      zombieCount += 50;
+      level++;
+    }
     if(b.alive)
     {
       b.drawBoss();
@@ -197,6 +203,9 @@ void draw()
 
   zomTimer++;
   println("spawnTimer: " + spawnTimer);
+  textSize(50);
+  text("zombie count: " + level, 100, 100);
+  text("zombie count: " + z.size(), 100, 200);
 }
 
 void blockPathing( Player o )
@@ -482,11 +491,11 @@ void keyPressed()
 }
 void spawnZombies()
 {
-    for (int i = 0; i < 100; i++)
+    for (int i = 0; i < zombieCount; i++)
     {
       z.add( new Zombies( random(width), random(height) ) );
     }
-  spawnTimer = millis() + 500;
+  spawnTimer = millis() + 10000;
 }
 
 void keyReleased()
