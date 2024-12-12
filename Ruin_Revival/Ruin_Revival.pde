@@ -27,7 +27,7 @@ int score;
 int mapScale = 1;
 int dangerSize = 90;
 int spawnTimer;
-int zombieCount = 30;
+int zombieCount = 10;
 int level;
 
 boolean inCabin = false;
@@ -156,17 +156,23 @@ void draw()
       z.get(i).drawZombie();
       if (!pause)
         z.get(i).moveZombie();
+      if(z.get(i).yPos < 0 || z.get(i).yPos > height || z.get(i).xPos < 0 || z.get(i).xPos > width)
+        z.remove(i);
     }
     if(millis() > spawnTimer && z.size() == 0)
     {
       spawnZombies();
-      zombieCount += 50;
+      zombieCount += 11;
       level++;
     }
-    if(b.alive)
+    if(level == 1 || level == 5 || level == 10)
     {
-      b.drawBoss();
-      b.moveBoss();
+      if(b.alive)
+      {
+        b.drawBoss();
+        b.moveBoss();
+      }
+      b.alive = true;
     }
     p.drawPlayer();
     HUD.drawHUD();
@@ -202,10 +208,16 @@ void draw()
   }
 
   zomTimer++;
-  println("spawnTimer: " + spawnTimer);
+  //println("spawnTimer: " + spawnTimer);
   textSize(50);
-  text("zombie count: " + level, 100, 100);
-  text("zombie count: " + z.size(), 100, 200);
+  text("zombie count: " + zombieCount, 50, 100);
+  text("level: " + level, 50, 150);
+  text("zombie size: " + z.size(), 50, 200);
+  if(z.size() > 0)
+  {
+    text("last zom xPos: " + z.get(0).xPos, 50, 250);
+    text("last zom yPos: " + z.get(0).yPos, 50, 300);
+  }
 }
 
 void blockPathing( Player o )
@@ -491,7 +503,7 @@ void keyPressed()
 }
 void spawnZombies()
 {
-    for (int i = 0; i < zombieCount; i++)
+    for (int i = 0; i < zombieCount-1; i++)
     {
       z.add( new Zombies( random(width), random(height) ) );
     }
