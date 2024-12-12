@@ -24,7 +24,7 @@ class Map
     mapStr += "###############"; //15x15 map
     mapStr += "^             !";
     mapStr += "^     @  $$$  !"; // * = cobble
-    mapStr += "^ &  ***  $$  !";
+    mapStr += "^   &***  $$  !";
     mapStr += "^      /<>    !"; // #/%/!/^ = trees
     mapStr += "^        ***  !";
     mapStr += "^   $$$   **  !"; // $ = water
